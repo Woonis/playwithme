@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<!--
+  놀자 시리즈 — 소개 페이지 (Play with ... series — landing page)
+
+  하는 일이 셋입니다.
+  1. 인스타그램(@playwith.wooni) 프로필 링크가 가리키는 한 장. 앱 열 개를 모아 둡니다.
+  2. App Store Connect의 **지원 URL**. 열 앱 가운데 docs/support.html이 있는 것은
+     나랑 놀자·페인트야 놀자 둘뿐이라, 나머지 여덟은 이 페이지를 지원 URL로 씁니다.
+  3. 각 앱 개인정보 처리방침으로 가는 길목.
+
+  올리는 곳: https://woonis.github.io/play/  (GitHub Pages, 이 docs/ 폴더)
+
+  ■ 앱이 스토어에 올라가면 아래 APPS 배열의 store 값에 주소를 넣습니다.
+    store가 비어 있으면 "준비 중" 딱지가 붙고 누를 수 없습니다.
+
+  외부 파일·폰트·스크립트에 의존하지 않습니다(한 파일로 끝).
+-->
+<html lang="ko" data-lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>놀자 시리즈 · 아이와 함께 쓰는 앱 / Play with … · Kids apps by Wooni</title>
+<meta name="description" content="광고도 결제도 없고 아이 정보를 모으지 않는 iPhone·iPad 키즈 앱 열 개. Ten kids apps for iPhone and iPad with no ads, no purchases and no data collection.">
+<meta name="color-scheme" content="light">
+<meta property="og:title" content="놀자 시리즈 — 광고 없는 아이 앱 열 개">
+<meta property="og:description" content="광고 없음 · 결제 없음 · 수집 없음. 만 0세부터 초등까지, iPhone·iPad에서.">
+<style>
+  :root {
+    --ink: #21263D;
+    --body: #3B3B4F;
+    --subtle: #737A94;
+    --grad-start: #668CFC;
+    --grad-end: #A170F2;
+    --star: #FFC740;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    padding: 28px 18px 64px;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Rounded", "Apple SD Gothic Neo",
+                 "Segoe UI", "Noto Sans KR", system-ui, sans-serif;
+    color: var(--body);
+    line-height: 1.7;
+    background: linear-gradient(180deg, rgba(205,222,255,0.85) 0%, rgba(233,220,255,0.45) 38%, #fff 100%);
+    background-attachment: fixed;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+
+  /* 이름표 */
+  header { text-align: center; margin-bottom: 8px; }
+  .mark { width: 92px; height: 92px; display: block; margin: 0 auto 14px; }
+  h1 {
+    margin: 0;
+    font-size: clamp(24px, 6vw, 34px);
+    font-weight: 800; letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .sub { margin: 8px 0 0; font-size: 15px; font-weight: 600; color: var(--subtle); }
+
+  /* 언어 고르기 */
+  .langs {
+    display: flex; justify-content: center; gap: 6px;
+    margin: 18px auto 0; padding: 4px;
+    width: max-content;
+    background: rgba(255,255,255,0.8);
+    border-radius: 999px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+  .langs button {
+    appearance: none; border: 0; cursor: pointer;
+    font: inherit; font-size: 13px; font-weight: 800;
+    color: var(--subtle);
+    padding: 7px 18px; border-radius: 999px;
+    background: transparent;
+    transition: background 0.15s, color 0.15s;
+  }
+  .langs button[aria-pressed="true"] {
+    background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+    color: #fff;
+  }
+  .langs button:focus-visible { outline: 3px solid var(--grad-end); outline-offset: 2px; }
+
+  /* 언어에 따라 한쪽만 보입니다 */
+  html[data-lang="ko"] [lang="en"] { display: none; }
+  html[data-lang="en"] [lang="ko"] { display: none; }
+
+  /* 약속 세 줄 */
+  .promise {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+    margin: 26px 0 34px;
+  }
+  .promise span {
+    background: #fff;
+    border: 1.5px solid rgba(59,59,79,0.08);
+    border-radius: 999px;
+    padding: 7px 15px;
+    font-size: 13.5px; font-weight: 800;
+    color: var(--ink);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  h2.section {
+    margin: 40px 0 4px;
+    font-size: 19px; font-weight: 800; letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  p.lead { margin: 0 0 18px; font-size: 14.5px; color: rgba(59,59,79,0.72); }
+
+  /* 앱 목록 */
+  .apps { display: grid; gap: 12px; }
+  @media (min-width: 620px) { .apps { grid-template-columns: 1fr 1fr; } }
+
+  .app {
+    display: flex; gap: 14px; align-items: center;
+    background: #fff;
+    border: 1.5px solid rgba(59,59,79,0.08);
+    border-radius: 22px;
+    padding: 14px 16px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+  }
+  .app .tile {
+    flex: none;
+    width: 58px; height: 58px;
+    border-radius: 13px;                 /* 58 × 0.2237 — iOS 스퀴클 비율 */
+    display: grid; place-items: center;
+    font-size: 27px; font-weight: 900;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.12);
+  }
+  .app .body { min-width: 0; }
+  .app h3 {
+    margin: 0; font-size: 16px; font-weight: 800; letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .app p { margin: 2px 0 0; font-size: 13.5px; color: rgba(59,59,79,0.70); }
+  .app .meta { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .app .age {
+    font-size: 11.5px; font-weight: 800; color: var(--subtle);
+    background: rgba(115,122,148,0.1);
+    border-radius: 999px; padding: 3px 9px;
+  }
+  .app a.get, .app span.soon {
+    font-size: 12px; font-weight: 800;
+    border-radius: 999px; padding: 4px 11px;
+    text-decoration: none;
+  }
+  .app a.get {
+    color: #fff;
+    background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+  }
+  .app span.soon { color: var(--subtle); background: rgba(115,122,148,0.12); }
+  .app a.policy { font-size: 11.5px; font-weight: 700; color: var(--subtle); text-decoration: underline; }
+
+  /* 안내 카드 */
+  .card {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: #fff;
+    border: 1.5px solid rgba(59,59,79,0.08);
+    border-radius: 20px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  }
+  .card .emoji { font-size: 27px; line-height: 1.2; flex: none; }
+  .card h3 { margin: 0 0 4px; font-size: 16.5px; font-weight: 800; color: var(--ink); }
+  .card p { margin: 0; font-size: 14.5px; color: rgba(59,59,79,0.72); }
+
+  /* 문의 */
+  .contact {
+    margin-top: 18px;
+    background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+    border-radius: 22px;
+    padding: 22px 20px;
+    text-align: center;
+    color: #fff;
+  }
+  .contact h3 { margin: 0 0 6px; font-size: 18px; font-weight: 800; }
+  .contact p { margin: 0 0 14px; font-size: 14px; color: rgba(255,255,255,0.88); }
+  .contact a {
+    display: inline-block;
+    background: #fff; color: var(--ink);
+    font-size: 14.5px; font-weight: 800;
+    text-decoration: none;
+    border-radius: 999px; padding: 10px 22px;
+  }
+
+  footer {
+    margin-top: 34px; text-align: center;
+    font-size: 12.5px; color: var(--subtle);
+  }
+  footer a { color: var(--subtle); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <!-- 시리즈 마크. Brand/profile-B.png와 같은 그림입니다(흰 타일 + 놀 + 별). -->
+    <svg class="mark" viewBox="0 0 100 100" role="img" aria-label="놀자 시리즈">
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#668CFC"/>
+          <stop offset="1" stop-color="#A170F2"/>
+        </linearGradient>
+      </defs>
+      <rect width="100" height="100" rx="22.37" fill="url(#g)"/>
+      <rect x="20" y="20" width="60" height="60" rx="13.4" fill="#fff" fill-opacity="0.97"/>
+      <text x="50" y="50" text-anchor="middle" dominant-baseline="central"
+            font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif"
+            font-size="34" font-weight="900" fill="#4F8CF7">놀</text>
+      <circle cx="78" cy="22" r="11" fill="#FFC740"/>
+      <path d="M78 15.5l2.3 4.7 5.2.8-3.8 3.7.9 5.1-4.6-2.4-4.6 2.4.9-5.1-3.8-3.7 5.2-.8z" fill="#fff"/>
+    </svg>
+
+    <h1>
+      <span lang="ko">놀자 시리즈</span>
+      <span lang="en">Play with&nbsp;… </span>
+    </h1>
+    <p class="sub">
+      <span lang="ko">아이와 함께 쓰는 iPhone · iPad 앱 열 개</span>
+      <span lang="en">Ten kids apps for iPhone and iPad</span>
+    </p>
+
+    <div class="langs" role="group" aria-label="언어 / Language">
+      <button type="button" data-set="ko" aria-pressed="true">한국어</button>
+      <button type="button" data-set="en" aria-pressed="false">English</button>
+    </div>
+  </header>
+
+  <div class="promise">
+    <span lang="ko">광고 없음</span><span lang="en">No ads</span>
+    <span lang="ko">인앱 결제 없음</span><span lang="en">No in-app purchases</span>
+    <span lang="ko">계정 없음</span><span lang="en">No account</span>
+    <span lang="ko">아이 정보 수집 없음</span><span lang="en">No data collected</span>
+    <span lang="ko">인터넷 없이 됨</span><span lang="en">Works offline</span>
+  </div>
+
+  <h2 class="section">
+    <span lang="ko">앱 열 개</span>
+    <span lang="en">The apps</span>
+  </h2>
+  <p class="lead">
+    <span lang="ko">모두 한국어·영어를 지원하고 기기 언어를 따라갑니다. 앱 안에 언어 전환 스위치는 두지 않았습니다.</span>
+    <span lang="en">Every app supports Korean and English and follows the device language. There is no language switch inside the apps, by design.</span>
+  </p>
+
+  <div class="apps" id="apps"></div>
+
+  <h2 class="section">
+    <span lang="ko">어떻게 만들었나</span>
+    <span lang="en">How they are made</span>
+  </h2>
+  <p class="lead">
+    <span lang="ko">열 개가 같은 규칙을 지킵니다.</span>
+    <span lang="en">All ten follow the same rules.</span>
+  </p>
+
+  <div class="card">
+    <div class="emoji">🔊</div>
+    <div>
+      <h3><span lang="ko">글을 못 읽어도 혼자 할 수 있게</span><span lang="en">Playable before reading</span></h3>
+      <p>
+        <span lang="ko">문제를 소리로 읽어 줍니다. 버튼에는 글자 대신 누르면 생기는 일을 그려 둡니다.</span>
+        <span lang="en">Questions are read aloud, and buttons show what they do instead of spelling it out.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="emoji">🫧</div>
+    <div>
+      <h3><span lang="ko">틀렸다고 빨간 표시를 하지 않습니다</span><span lang="en">A wrong answer is never red</span></h3>
+      <p>
+        <span lang="ko">다섯 살에게 빨강은 "실패"보다 "혼남"입니다. 틀리면 버튼이 살짝 흔들리고 다시 해 볼 수 있어요. 맞히면 별과 종이꽃가루로 분명하게 칭찬합니다.</span>
+        <span lang="en">To a five-year-old, red reads as "you are in trouble". A wrong answer only gives a gentle shake. A right one gets stars and confetti.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="emoji">🔒</div>
+    <div>
+      <h3><span lang="ko">어른용 화면은 어른 확인 뒤에</span><span lang="en">Grown-up screens sit behind a gate</span></h3>
+      <p>
+        <span lang="ko">설정과 앱 밖으로 나가는 링크는 글자로 적은 곱셈("칠 곱하기 팔")을 지나야 열립니다. 아직 글을 못 읽는 아이는 무엇을 묻는지조차 알 수 없습니다.</span>
+        <span lang="en">Settings and any link that leaves the app sit behind a multiplication written out in words, so a child who cannot read yet cannot even tell what is being asked.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="emoji">📵</div>
+    <div>
+      <h3><span lang="ko">아이 정보를 모으지 않습니다</span><span lang="en">We collect nothing</span></h3>
+      <p>
+        <span lang="ko">서버도 계정도 분석 도구도 없습니다. 모은 별과 설정은 기기 안에만 남고 밖으로 나가지 않습니다.</span>
+        <span lang="en">No servers, no accounts, no analytics. Stars and settings stay on the device and never leave it.</span>
+      </p>
+    </div>
+  </div>
+
+  <h2 class="section">
+    <span lang="ko">문의 · 지원</span>
+    <span lang="en">Support</span>
+  </h2>
+
+  <div class="contact">
+    <h3><span lang="ko">무엇이든 물어보세요</span><span lang="en">Ask us anything</span></h3>
+    <p>
+      <span lang="ko">안 되는 것, 틀린 내용, 있으면 좋겠는 것 — 메일로 보내 주시면 사람이 읽고 답합니다.</span>
+      <span lang="en">Bugs, mistakes, requests — write to us and a person will read and reply.</span>
+    </p>
+    <a href="mailto:baby.planner.wooni@gmail.com">baby.planner.wooni@gmail.com</a>
+  </div>
+
+  <footer>
+    <p>
+      © <span id="year">2026</span> Wooni.
+      <span lang="ko">개인정보 처리방침은 각 앱 옆의 링크를 눌러 주세요.</span>
+      <span lang="en">Privacy policies are linked next to each app above.</span>
+    </p>
+  </footer>
+</div>
+
+<script>
+// 앱 목록. 스토어에 올라간 앱의 store 값에 주소를 채우면 "받기" 단추가 켜집니다.
+// glyph·색은 Brand/make_app_thumbs.swift와 같은 값입니다 — 한쪽만 고치면 썸네일과 어긋납니다.
+var APPS = [
+  { glyph: "터", ko: "터미타임아 놀자!", en: "Play with Tummy Time!",
+    koDesc: "흑백 카드 열 장이 천천히 지나갑니다. 태어난 날로 모드를 추천해요.",
+    enDesc: "Ten high-contrast cards drift by. The mode is suggested from the birth date.",
+    koAge: "0~5개월", enAge: "0–5 months",
+    from: "#F7799F", to: "#C74C8E",
+    policy: "https://woonis.github.io/playtermitime/privacy.html", store: "" },
+
+  { glyph: "나", ko: "나랑 놀자!", en: "Play with Me!",
+    koDesc: "숫자 · 한글 · ABC · 국기 네 가지 놀이, 70단계.",
+    enDesc: "Numbers, Hangul, ABC and flags — four games across 70 levels.",
+    koAge: "만 5세~", enAge: "Ages 5+",
+    from: "#668CFC", to: "#A170F2",
+    policy: "https://woonis.github.io/playwithme/privacy.html", store: "" },
+
+  { glyph: "시", ko: "시계야 놀자!", en: "Play with Clock!",
+    koDesc: "동그란 시계와 숫자 시계. 정각 → 30분 → 5분 → 1분 → 초.",
+    enDesc: "Analogue and digital clocks: o'clock → half → five → one minute → seconds.",
+    koAge: "만 5세~", enAge: "Ages 5+",
+    from: "#9CC0F7", to: "#9B8AE6",
+    policy: "https://woonis.github.io/clockplay/privacy.html", store: "" },
+
+  { glyph: "도", ko: "도형아 놀자!", en: "Play with Shapes!",
+    koDesc: "평면 열셋과 입체 여덟, 변 세기까지 15단계.",
+    enDesc: "Thirteen flat and eight solid shapes, plus counting sides — 15 levels.",
+    koAge: "만 5세~", enAge: "Ages 5+",
+    from: "#4F99F2", to: "#9470F0",
+    policy: "https://woonis.github.io/shapeplay/privacy.html", store: "" },
+
+  { glyph: "색", ko: "색깔아 놀자!", en: "Play with Colors!",
+    koDesc: "색 이름 고르기, 이름 보고 색 찾기, 색 섞기.",
+    enDesc: "Pick the colour, name the colour, and mix two colours.",
+    koAge: "만 5세~", enAge: "Ages 5+",
+    from: "#49ADCC", to: "#8A57D9",
+    policy: "https://woonis.github.io/colorplay/privacy.html", store: "" },
+
+  { glyph: "미", ko: "미로야 놀자!", en: "Play with Maze!",
+    koDesc: "네모 · 숫자 · 동그라미 · 깃발 네 가지 미로. 글자가 없습니다.",
+    enDesc: "Square, number, circular and flag mazes. No reading required.",
+    koAge: "만 5세~", enAge: "Ages 5+",
+    from: "#8C6BF5", to: "#5438AE",
+    policy: "https://woonis.github.io/mazeplay/privacy.html", store: "" },
+
+  { glyph: "칠", ko: "칠교야 놀자!", en: "Play with Tangram!",
+    koDesc: "일곱 조각을 끌고 돌리고 뒤집어 도안 47개를 채웁니다.",
+    enDesc: "Drag, turn and flip seven pieces to fill 47 silhouettes.",
+    koAge: "만 5세~", enAge: "Ages 5+",
+    from: "#9470F0", to: "#5C38B8",
+    policy: "https://woonis.github.io/tangramplay/privacy.html", store: "" },
+
+  { glyph: "페", ko: "페인트야 놀자!", en: "Play with Paint!",
+    koDesc: "붓 · 도장 · 페인트 · 지우개로 그리고, 밑그림 70종에 색칠합니다.",
+    enDesc: "Brush, stamp, paint bucket and eraser, with 70 outlines to colour.",
+    koAge: "만 5세~", enAge: "Ages 5+",
+    from: "#93B8F2", to: "#9B87E2",
+    policy: "https://woonis.github.io/play-with-paint/privacy.html", store: "" },
+
+  { glyph: "달", ko: "달력아 놀자!", en: "Play with Calendar!",
+    koDesc: "요일 일곱 개부터 달력 한 장 읽기까지 19단계.",
+    enDesc: "From the seven weekdays to reading a whole calendar page — 19 levels.",
+    koAge: "만 5세~", enAge: "Ages 5+",
+    from: "#6E6BF0", to: "#A05CE8",
+    policy: "https://woonis.github.io/playwithcalendar/privacy.html", store: "" },
+
+  { glyph: "구", ko: "구구단아 놀자!", en: "Play with Times Tables!",
+    koDesc: "보고 들으며 외우기 → 풀어 보기. 설정에서 20단까지 넓힐 수 있어요.",
+    enDesc: "Chant along, then answer. Can be widened to the 20 times table.",
+    koAge: "만 6세~", enAge: "Ages 6+",
+    from: "#6E6BF0", to: "#A05CE8",
+    policy: "https://woonis.github.io/playwithmultiplicationtables/privacy.html", store: "" },
+];
+
+(function () {
+  var html = document.documentElement;
+
+  function text(ko, en) {
+    return '<span lang="ko">' + ko + '</span><span lang="en">' + en + '</span>';
+  }
+
+  document.getElementById("apps").innerHTML = APPS.map(function (a) {
+    var action = a.store
+      ? '<a class="get" href="' + a.store + '">' + text("받기", "Get") + '</a>'
+      : '<span class="soon">' + text("준비 중", "Coming soon") + '</span>';
+    return '' +
+      '<div class="app">' +
+        '<div class="tile" style="background:linear-gradient(135deg,' + a.from + ',' + a.to + ')">' + a.glyph + '</div>' +
+        '<div class="body">' +
+          '<h3>' + text(a.ko, a.en) + '</h3>' +
+          '<p>' + text(a.koDesc, a.enDesc) + '</p>' +
+          '<div class="meta">' +
+            '<span class="age">' + text(a.koAge, a.enAge) + '</span>' +
+            action +
+            '<a class="policy" href="' + a.policy + '">' + text("처리방침", "Privacy") + '</a>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+  }).join("");
+
+  // 언어 단추. 기기 언어가 한국어가 아니면 영어로 시작합니다.
+  var buttons = document.querySelectorAll(".langs button");
+  function setLang(lang) {
+    html.setAttribute("data-lang", lang);
+    html.setAttribute("lang", lang);
+    buttons.forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.set === lang));
+    });
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () { setLang(b.dataset.set); });
+  });
+  setLang((navigator.language || "ko").toLowerCase().indexOf("ko") === 0 ? "ko" : "en");
+
+  document.getElementById("year").textContent = String(new Date().getFullYear());
+})();
+</script>
+</body>
+</html>
