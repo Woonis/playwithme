@@ -22,6 +22,7 @@
 <title>놀자 시리즈 · 아이와 함께 쓰는 앱 / Play with … · Kids apps by Wooni</title>
 <meta name="description" content="광고도 결제도 없고 아이 정보를 모으지 않는 iPhone·iPad 키즈 앱 열 개. Ten kids apps for iPhone and iPad with no ads, no purchases and no data collection.">
 <meta name="color-scheme" content="light">
+<meta property="og:locale" content="ko_KR">
 <meta property="og:title" content="놀자 시리즈 — 광고 없는 아이 앱 열 개">
 <meta property="og:description" content="광고 없음 · 결제 없음 · 수집 없음. 만 0세부터 초등까지, iPhone·iPad에서.">
 <style>
@@ -332,7 +333,7 @@ var APPS = [
     enDesc: "Ten high-contrast cards drift by. The mode is suggested from the birth date.",
     koAge: "0~5개월", enAge: "0–5 months",
     from: "#F7799F", to: "#C74C8E",
-    policy: "https://woonis.github.io/playtermitime/privacy.html", store: "" },
+    policy: "https://woonis.github.io/playtummyitime/privacy.html", store: "" },
 
   { glyph: "나", ko: "나랑 놀자!", en: "Play with Me!",
     koDesc: "숫자 · 한글 · ABC · 국기 네 가지 놀이, 70단계.",
@@ -424,7 +425,7 @@ var APPS = [
       '</div>';
   }).join("");
 
-  // 언어 단추. 기기 언어가 한국어가 아니면 영어로 시작합니다.
+  // 언어 단추.
   var buttons = document.querySelectorAll(".langs button");
   function setLang(lang) {
     html.setAttribute("data-lang", lang);
@@ -436,7 +437,10 @@ var APPS = [
   buttons.forEach(function (b) {
     b.addEventListener("click", function () { setLang(b.dataset.set); });
   });
-  setLang((navigator.language || "ko").toLowerCase().indexOf("ko") === 0 ? "ko" : "en");
+  // 늘 한국어로 시작합니다. 브라우저 언어를 보지 않습니다 — 보는 사람 대부분이 한국
+  // 부모이고, 영어로 올 사람(앱스토어 심사자 등)에게는 머리글의 단추가 바로 보입니다.
+  // 앱과는 반대입니다: 앱 안 글자는 기기 언어를 따라가고 전환 스위치가 없습니다.
+  setLang("ko");
 
   document.getElementById("year").textContent = String(new Date().getFullYear());
 })();
