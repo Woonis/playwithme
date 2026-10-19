@@ -153,7 +153,7 @@
 <div class="wrap">
 
   <header>
-    <!-- 앱 아이콘과 같은 그림: 파랑→보라 네모 안 하얀 타일 2×2 (+ · 가 · A · ★) -->
+    <!-- 앱 아이콘과 같은 그림: 파랑→보라 네모 안 하얀 타일 2×2 (+ · 가 · A · 시계) -->
     <svg class="mark" viewBox="0 0 100 100" role="img" aria-label="나랑 놀자! / Play with Me!">
       <defs>
         <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
@@ -174,7 +174,13 @@
         <text x="30" y="31" font-size="26" fill="#4F8CF7">+</text>
         <text x="70" y="31" font-size="19" fill="#F0669E">가</text>
         <text x="30" y="71" font-size="23" fill="#9470F0">A</text>
-        <text x="70" y="71" font-size="22" fill="#FFC233">★</text>
+        <!-- 넷째 타일은 시계입니다. 아이콘 스크립트의 drawClock 과 같은 비율:
+             반지름 = 타일*0.34 · 선 굵기 = 타일*0.085 · 분침 위로 r*0.66 · 시침 오른쪽 r*0.46 -->
+        <g stroke="#3DB8D9" stroke-width="2.9" stroke-linecap="round" fill="none">
+          <circle cx="70" cy="71" r="11.6"/>
+          <path d="M70 71 L70 63.3"/>
+          <path d="M70 71 L75.3 71" stroke-width="3.2"/>
+        </g>
       </g>
     </svg>
 
@@ -207,15 +213,18 @@
     <div class="card" data-lang="ko">
       <span class="emoji" aria-hidden="true">🙅</span>
       <div>
-        <h2>아무것도 수집하지 않아요</h2>
-        <p>이름도 나이도 이메일도 묻지 않아요. 계정이 없고, 광고나 사용 기록 분석도 넣지 않았습니다.</p>
+        <h2>서버로 아무것도 보내지 않아요</h2>
+        <p>계정이 없고, 광고나 사용 기록 분석도 넣지 않았습니다. 앱이 묻는 것은 아이를 부를
+          이름(별명도 괜찮아요) 하나뿐이고, 그마저도 <strong>이 기기 안에만</strong> 남습니다.</p>
       </div>
     </div>
     <div class="card" data-lang="en">
       <span class="emoji" aria-hidden="true">🙅</span>
       <div>
-        <h2>We collect nothing</h2>
-        <p>We never ask for a name, an age or an email. There are no accounts, no ads and no analytics.</p>
+        <h2>Nothing is sent to a server</h2>
+        <p>There are no accounts, no ads and no analytics. The only thing the App asks for is a name
+          to call the child by (a nickname is fine), and even that stays
+          <strong>on this device only</strong>.</p>
       </div>
     </div>
 
@@ -223,18 +232,19 @@
     <div class="card" data-lang="ko">
       <span class="emoji" aria-hidden="true">⭐️</span>
       <div>
-        <h2>별은 기기에만 있어요</h2>
-        <p>받은 별과 열린 단계, 소리 스위치, 부모가 켜 둔 연산만 이 기기 안에 저장돼요.
-          앱을 지우면 함께 사라지고, <em>설정 → 기록 지우기</em>로 언제든 직접 지울 수 있습니다.</p>
+        <h2>진행 기록은 기기에만 있어요</h2>
+        <p>열린 단계, 소리 스위치, 아이 이름, 오늘의 도전 계획(고른 놀이·기간·약속한 보상)만
+          이 기기 안에 저장돼요. 앱을 지우면 함께 사라지고, <em>설정 → 놀이터 기록 지우기</em>로
+          언제든 직접 지울 수 있습니다.</p>
       </div>
     </div>
     <div class="card" data-lang="en">
       <span class="emoji" aria-hidden="true">⭐️</span>
       <div>
-        <h2>Stars stay on the device</h2>
-        <p>Only the stars earned, the unlocked levels, the sound switches and the operations a grown-up
-          enabled are stored on this device. Deleting the app removes them, and
-          <em>Settings → Reset Progress</em> clears them any time.</p>
+        <h2>Progress stays on the device</h2>
+        <p>Only the unlocked levels, the sound switches, the child's name and the Today's Challenge
+          plan (chosen games, length, promised reward) are stored on this device. Deleting the app
+          removes them, and <em>Settings → Erase playground progress</em> clears them any time.</p>
       </div>
     </div>
 
@@ -274,15 +284,19 @@
     <div class="card" data-lang="ko">
       <span class="emoji" aria-hidden="true">🔐</span>
       <div>
-        <h2>설정은 어른만 열 수 있어요</h2>
-        <p>설정 화면은 어른 확인(글자로 적은 곱셈 문제)을 지나야 열립니다. 인앱 결제도, 채팅·공유 같은 기능도 없어요.</p>
+        <h2>어른만 열 수 있는 것</h2>
+        <p>설정 화면, 앱을 나가는 링크, 미션 보드를 그림으로 내보내는 것은 모두
+          어른 확인(글자로 적은 곱셈 문제)을 지나야 합니다. 인앱 결제와 채팅은 없고,
+          아이 혼자 무엇을 밖으로 보낼 수 있는 길도 없습니다.</p>
       </div>
     </div>
     <div class="card" data-lang="en">
       <span class="emoji" aria-hidden="true">🔐</span>
       <div>
-        <h2>Settings are for grown-ups</h2>
-        <p>The settings screen sits behind a parental gate (a multiplication question written out in words). There are no in-app purchases and no chat or sharing features.</p>
+        <h2>Grown-ups only</h2>
+        <p>The settings screen, every link that leaves the App and exporting the Mission Board as a
+          picture all sit behind a parental gate (a multiplication question written out in words).
+          There are no in-app purchases, no chat, and no way for a child alone to send anything out.</p>
       </div>
     </div>
 
@@ -293,23 +307,37 @@
         <h3>1. 적용 범위</h3>
         <p>이 방침은 Wooni(이하 “개발자”)가 만든 iPhone·iPad 앱
           <strong>나랑 놀자!</strong>(번들 ID <code>com.wooni.playwithme</code>, 이하 “앱”)에 적용됩니다.
-          앱에는 숫자 놀이·한글 놀이·ABC 놀이·국기 놀이가 들어 있습니다.</p>
+          앱에는 열두 가지 놀이(숫자·한글·ABC·국기·시계·구구단·달력·도형·색·미로·칠교·그리기)와
+          하루 15문제를 내는 <strong>오늘의 도전</strong>이 들어 있습니다.</p>
 
         <h3>2. 수집하는 개인정보</h3>
-        <p><strong>없습니다.</strong> 앱은 이름·생년월일·이메일·전화번호·주소·사진·연락처·위치·기기
-          식별자(IDFA 등)를 비롯한 어떠한 개인정보도 수집·전송하지 않습니다. 회원가입 절차가 없고,
-          로그인할 계정도 없습니다. 아이가 입력하는 것은 문제의 답과 따라쓰기 획뿐이고, 그마저도
-          채점하는 순간에만 쓰이고 저장되지 않습니다.</p>
+        <p><strong>개발자가 수집하는 개인정보는 없습니다.</strong> 앱은 생년월일·이메일·전화번호·주소·
+          연락처·위치·기기 식별자(IDFA 등)를 다루지 않고, 어떤 정보도 외부로 전송하지 않습니다.
+          회원가입 절차가 없고, 로그인할 계정도 없습니다.</p>
+        <p>첫 설정에서 <strong>아이를 부를 이름</strong>을 한 번 받습니다. 별명이나 애칭도 괜찮고,
+          비워 두어도 앱을 모두 쓸 수 있습니다. 이 이름은 화면 제목("지우의 놀이터")과 미션 보드,
+          그리기 놀이의 서명에만 쓰이며 <strong>기기 밖으로 나가지 않습니다</strong>.
+          언제든 설정에서 고치거나 비울 수 있습니다. 애플의 앱 개인정보 표시에서는 이것을
+          "수집"으로 보지 않습니다 — 기기를 떠나지 않기 때문입니다.</p>
+        <p>아이가 그 밖에 입력하는 것은 문제의 답과 따라쓰기 획뿐이고, 그마저도 채점하는 순간에만
+          쓰이고 저장되지 않습니다.</p>
 
         <h3>3. 기기 안에 저장되는 것</h3>
         <ul>
-          <li>단계별로 받은 가장 좋은 별 개수와 그에 따라 열린 단계</li>
-          <li>효과음·문제 읽어주기 스위치</li>
-          <li>부모가 켜 둔 연산(더하기·빼기·곱하기·나누기)</li>
+          <li>단계별로 받은 가장 좋은 별 개수와 그에 따라 열린 단계 (별은 아이 화면에 보여 주지
+            않고, 다음 단계를 여는 데만 씁니다)</li>
+          <li>마지막 도전에서 틀린 문제가 있던 단계 번호 — 다음 도전에 그 단계를 한 번 더 내고
+            나면 지워집니다</li>
+          <li>효과음·문제 읽어주기·진동 스위치와 읽어주는 빠르기</li>
+          <li>문제에 쓰는 말(한국어·영어·섞어서)과 부모가 켜 둔 연산·범위 같은 놀이별 설정</li>
+          <li>첫 설정에서 받은 아이 이름(또는 별명)</li>
+          <li>매일 알림을 켰는지와 보낼 시각</li>
+          <li>오늘의 도전 계획: 고른 놀이, 기간(15·30·60·90일), 끝낸 날수,
+            약속한 보상의 이름과 — 넣었다면 — 부모가 고른 보상 사진 한 장</li>
         </ul>
         <p>이 값은 iOS의 <code>UserDefaults</code>를 통해 기기 내부 저장 공간에만 남고 외부로 전송되지
           않으며, 앱을 삭제하면 함께 지워집니다. 개발자는 이 정보에 접근할 수 없습니다.
-          <em>설정 → 기록 지우기</em>로 보호자가 직접 모두 지울 수 있습니다.</p>
+          <em>설정 → 놀이터 기록 지우기</em>로 보호자가 직접 모두 지울 수 있습니다.</p>
 
         <h3>4. 소리와 읽어주기</h3>
         <p>아직 글을 못 읽는 아이도 혼자 할 수 있게, 문제를 소리로 읽어 주는 기능이 있습니다.
@@ -318,11 +346,25 @@
           없습니다. 더 자연스러운 목소리를 쓰고 싶은 보호자를 위해 설정 화면에서 iOS 설정 앱의
           목소리 내려받기 경로를 글로 안내할 뿐, 앱이 무엇을 내려받지는 않습니다.</p>
 
-        <h3>5. 권한</h3>
-        <p>앱은 사진·연락처·위치·마이크·알림 등 어떤 시스템 권한도 요청하지 않습니다.</p>
+        <h3>5. 권한과 사진</h3>
+        <p>앱은 위치·마이크·연락처 권한을 요청하지 않습니다. <strong>알림</strong>은 보호자가
+          설정에서 "매일 알림"을 켤 때만 묻고, 끄면 예약한 알림을 모두 지웁니다 —
+          알림은 기기 안에서 예약하는 로컬 알림이고 서버를 거치지 않습니다.
+          사진은 두 자리에서만 닿습니다.</p>
+        <ul>
+          <li><strong>그린 그림 저장</strong>(그리기 놀이) — 아이가 저장을 누를 때만 사진 앱에
+            <em>추가</em>합니다(<code>NSPhotoLibraryAddUsageDescription</code>). 앱은 사진 앱의
+            사진을 읽지 않습니다.</li>
+          <li><strong>보상 그림 넣기</strong>(설정, 어른 확인 뒤) — iOS의 사진 고르기 화면을 띄워
+            부모가 고른 한 장만 받습니다. 앱이 사진 앱 전체에 접근하지 않으므로 권한을 따로
+            묻지 않습니다. 받은 그림은 이 기기 안에만 남습니다.</li>
+        </ul>
+        <p>미션 보드를 그림으로 내보내는 기능은 iOS의 공유 화면을 띄울 뿐이고, 어디로 보낼지는
+          어른이 그 화면에서 고릅니다. 이 기능도 어른 확인 뒤에 있습니다.</p>
 
         <h3>6. 네트워크 통신 · 제3자 제공</h3>
-        <p>앱에는 네트워크 통신 기능이 없습니다. 광고 SDK, 분석 도구, 크래시 리포터, 소셜 로그인 등
+        <p>앱에는 네트워크 통신 기능이 없습니다. 매일 알림도 기기 안에서 예약하는 로컬 알림이라
+          푸시 서버를 쓰지 않고, 알림 토큰을 만들지도 전송하지도 않습니다. 광고 SDK, 분석 도구, 크래시 리포터, 소셜 로그인 등
           제3자 코드를 포함하지 않으며, 따라서 제3자에게 제공·위탁하거나 국외로 이전하는 개인정보도
           없습니다. 인앱 결제도 없습니다.</p>
 
@@ -330,12 +372,15 @@
         <p>앱은 만 5세 이상 아동을 주 이용자로 하며, 미국 COPPA·EU GDPR·대한민국 개인정보 보호법에서
           정한 아동 개인정보를 포함해 어떠한 개인정보도 수집하지 않습니다. 수집이 없으므로 보호자의
           검증 가능한 동의 절차도 필요하지 않습니다. 앱 안에는 광고나 채팅·공유처럼 다른 사람과
-          연결되는 기능이 없습니다. 앱 밖으로 나가는 링크는 설정 화면에 있는 이 방침 전문 링크
-          하나뿐이며, 설정 화면 자체가 어른 확인 뒤에 있습니다.</p>
+          연결되는 기능이 없습니다. 아이 이름은 기기 안에만 남고 전송되지 않으므로, 아동의
+          개인정보를 수집·이용하는 것이 아닙니다. 앱 밖으로 나가는 길은 이 방침 전문 링크와
+          미션 보드 내보내기 둘뿐이며, 둘 다 어른 확인을 지나야 합니다.</p>
 
         <h3>8. 정보주체의 권리</h3>
-        <p>수집하는 정보가 없으므로 열람·정정·삭제·처리정지를 요청할 대상이 없습니다.
-          기기에 저장된 별과 설정은 <em>설정 → 기록 지우기</em>나 앱 삭제로 언제든 직접 지울 수 있습니다.</p>
+        <p>개발자가 보관하는 정보가 없으므로 열람·정정·삭제·처리정지를 요청할 대상이 없습니다.
+          기기에 저장된 것은 보호자가 직접 모두 다룰 수 있습니다 — 이름과 보상은
+          <em>설정</em>에서 고치거나 비우고, 별과 열린 단계는 <em>설정 → 놀이터 기록 지우기</em>로,
+          모은 스티커는 <em>설정 → 도전 진행 지우기</em>로, 전부는 앱 삭제로 지웁니다.</p>
 
         <h3>9. 방침 변경</h3>
         <p>내용이 바뀌면 이 페이지를 고치고 아래 최종 수정일을 갱신합니다. 중요한 변경은 앱 업데이트
@@ -352,24 +397,41 @@
         <h3>1. Scope</h3>
         <p>This policy applies to <strong>Play with Me!</strong> (bundle ID
           <code>com.wooni.playwithme</code>, the “App”), an iPhone and iPad app made by Wooni
-          (the “Developer”). The App contains number, Hangul, ABC and flag games.</p>
+          (the “Developer”). The App contains twelve games (numbers, Hangul, ABC, flags, clock,
+          times tables, calendar, shapes, colours, maze, tangram and drawing) and
+          <strong>Today's Challenge</strong>, which sets fifteen questions a day.</p>
 
         <h3>2. Personal data we collect</h3>
-        <p><strong>None.</strong> The App does not collect or transmit any personal data —
-          no name, date of birth, email, phone number, address, photos, contacts, location or
-          device identifiers (such as IDFA). There is no sign-up and no account to log in to.
-          The only things a child enters are answers and tracing strokes, and those are used to
-          check the answer and then discarded.</p>
+        <p><strong>The Developer collects no personal data.</strong> The App does not handle dates of
+          birth, emails, phone numbers, addresses, contacts, location or device identifiers (such as
+          IDFA), and it transmits nothing anywhere. There is no sign-up and no account to log in to.</p>
+        <p>During first-time setup the App asks once for <strong>a name to call the child by</strong>.
+          A nickname is fine, and it can be left blank — every part of the App still works. The name
+          is used only in screen titles (“Jiwoo's Playground”), on the Mission Board and as the
+          signature on drawings, and it <strong>never leaves the device</strong>. It can be changed or
+          cleared in Settings at any time. Apple's App Privacy labels do not treat this as
+          “collection”, because it never leaves the device.</p>
+        <p>Otherwise the only things a child enters are answers and tracing strokes, and those are
+          used to check the answer and then discarded.</p>
 
         <h3>3. What is stored on the device</h3>
         <ul>
-          <li>The best star count for each level, and which levels that unlocks</li>
-          <li>The sound-effects and read-aloud switches</li>
-          <li>The arithmetic operations a grown-up enabled (addition, subtraction, multiplication, division)</li>
+          <li>The best star count for each level, and which levels that unlocks (stars are never
+            shown to the child; they only open the next level)</li>
+          <li>The level numbers a question was missed in during the last challenge — cleared once
+            that level has come round one more time</li>
+          <li>The sound-effects, read-aloud and haptics switches, and the reading speed</li>
+          <li>The language used in questions (Korean, English or mixed) and per-game settings such as
+            the arithmetic operations a grown-up enabled</li>
+          <li>The child's name (or nickname) from first-time setup</li>
+          <li>Whether the daily reminder is on, and the time it is set to</li>
+          <li>The Today's Challenge plan: the chosen games, the length (15, 30, 60 or 90 days), how
+            many days are finished, the promised reward's name and — if one was added — a single
+            reward picture a grown-up chose</li>
         </ul>
         <p>These values are kept in the device's local storage via iOS <code>UserDefaults</code>, are
           never transmitted anywhere, and are deleted when the App is deleted. The Developer has no
-          access to them. A grown-up can erase everything with <em>Settings → Reset Progress</em>.</p>
+          access to them. A grown-up can erase everything with <em>Settings → Erase playground progress</em>.</p>
 
         <h3>4. Sound and read-aloud</h3>
         <p>So that a child who cannot read yet can play alone, the App can read questions out loud.
@@ -378,12 +440,28 @@
           For grown-ups who want a more natural voice, the settings screen simply explains where to
           download one in the iOS Settings app — the App itself downloads nothing.</p>
 
-        <h3>5. Permissions</h3>
-        <p>The App requests no system permissions at all — no photos, contacts, location,
-          microphone or notifications.</p>
+        <h3>5. Permissions and photos</h3>
+        <p>The App never requests location, microphone or contacts access.
+          <strong>Notifications</strong> are requested only when a grown-up turns on the daily
+          reminder in Settings, and turning it off removes every scheduled reminder — reminders are
+          local notifications scheduled on the device and never go through a server.
+          Photos are touched in exactly two places.</p>
+        <ul>
+          <li><strong>Saving a drawing</strong> (Drawing game) — only when a child taps save, the
+            drawing is <em>added</em> to the photo library
+            (<code>NSPhotoLibraryAddUsageDescription</code>). The App never reads existing photos.</li>
+          <li><strong>Adding a reward picture</strong> (Settings, behind the parental gate) — iOS's
+            own photo picker is shown and the App receives only the single image a grown-up picked.
+            Because the App never reaches into the whole library, no permission prompt is needed.
+            The picture stays on this device.</li>
+        </ul>
+        <p>Exporting the Mission Board as a picture simply opens the iOS share sheet; where it goes
+          is the grown-up's choice there. That feature also sits behind the parental gate.</p>
 
         <h3>6. Network activity and third parties</h3>
-        <p>The App has no networking code. It contains no advertising SDKs, analytics, crash
+        <p>The App has no networking code. The daily reminder is a local notification scheduled on
+          the device, so there is no push server and no notification token is ever created or sent.
+          It contains no advertising SDKs, analytics, crash
           reporters or social logins, so there is no personal data to share with third parties or
           transfer across borders. There are no in-app purchases.</p>
 
@@ -391,14 +469,17 @@
         <p>The App is intended for children aged 5 and up and collects no personal data of any kind,
           including data covered by COPPA (US), the GDPR (EU) and Korea's Personal Information
           Protection Act. Because nothing is collected, no verifiable parental consent is required.
-          The App has no advertising and no chat, sharing or other social features. The only link out
-          of the App is the link to this policy on the settings screen, and that screen itself sits
-          behind a parental gate.</p>
+          The App has no advertising, chat or other social features. The child's name stays on the
+          device and is never transmitted, so no children's personal data is collected or used. The
+          only two ways out of the App are the link to this policy and exporting the Mission Board,
+          and both sit behind a parental gate.</p>
 
         <h3>8. Your rights</h3>
-        <p>Because no data is collected, there is nothing to request access to, correct, delete or
-          restrict. The stars and settings held on the device can be removed at any time with
-          <em>Settings → Reset Progress</em> or by deleting the App.</p>
+        <p>Because the Developer holds no data, there is nothing to request access to, correct,
+          delete or restrict. Everything on the device is in the grown-up's hands: the name and the
+          reward can be edited or cleared in <em>Settings</em>, stars and unlocked levels with
+          <em>Settings → Erase playground progress</em>, collected stickers with
+          <em>Settings → Erase challenge progress</em>, and all of it by deleting the App.</p>
 
         <h3>9. Changes to this policy</h3>
         <p>If anything changes we will update this page and the “last updated” date below.
@@ -411,9 +492,10 @@
   </main>
 
   <footer>
-    <p data-lang="ko">최종 수정일: 2026년 8월 25일</p>
-    <p data-lang="en">Last updated: 25 August 2026</p>
+    <p data-lang="ko">최종 수정일: 2026년 10월 19일</p>
+    <p data-lang="en">Last updated: 19 October 2026</p>
     <p>© Copyright Wooni</p>
+    <p><a href="index.html" data-lang="ko">앱 소개</a><a href="index.html" data-lang="en">About the app</a><span data-lang="ko"> · </span><span data-lang="en"> · </span><a href="support.html" data-lang="ko">도움말</a><a href="support.html" data-lang="en">Help</a></p>
   </footer>
 
 </div>

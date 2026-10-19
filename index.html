@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<!--
+  나랑 놀자! / Play with Me! — 앱 소개 (Landing page)
+  출시 전 미리 보여 주는 소개 페이지입니다. 인스타그램 프로필 링크가 여기를 가리킵니다.
+  privacy.html · support.html 과 같은 껍데기(색 변수 · 언어 전환 · 아이콘 SVG)를 씁니다 —
+  세 쪽이 서로 다르게 보이면 같은 앱의 페이지로 보이지 않습니다.
+  외부 파일·폰트·스크립트에 의존하지 않아요.
+-->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>나랑 놀자! · 열두 가지 놀이와 오늘의 도전 / Play with Me!</title>
+<meta name="description" content="숫자·한글·ABC·국기·시계·구구단·달력·도형·색·미로·칠교·그리기 — 열두 가지 놀이와 매일 15문제 오늘의 도전. 광고·결제·계정 없이 기기 안에서만 돕니다.">
+<meta name="color-scheme" content="light">
+<meta property="og:title" content="나랑 놀자! / Play with Me!">
+<meta property="og:description" content="열두 가지 놀이와 오늘의 도전. 광고도 결제도 계정도 없는 아이 놀이 앱.">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --ink: #3B3B4F;
+    --brand-ink: #21263D;
+    --brand-subtle: #737A94;
+    --grad-start: #668CFC;
+    --grad-end: #A170F2;
+    --blue: #4F8CF7;
+    --pink: #F0669E;
+    --purple: #9470F0;
+    --yellow: #FFC233;
+    --teal: #3DB8D9;
+    --green: #2EBF85;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    padding: 28px 18px 56px;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Rounded", "Apple SD Gothic Neo",
+                 "Segoe UI", "Noto Sans KR", system-ui, sans-serif;
+    color: var(--ink);
+    line-height: 1.7;
+    background: linear-gradient(180deg, rgba(237,245,255,0.95) 0%, rgba(240,233,255,0.55) 42%, #fff 100%);
+    background-attachment: fixed;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+
+  /* 이름표 */
+  header { text-align: center; margin-bottom: 26px; }
+  .mark { width: 92px; height: 92px; display: block; margin: 0 auto 14px; }
+  h1 {
+    margin: 0;
+    font-size: clamp(26px, 6.4vw, 38px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--brand-ink);
+  }
+  .sub { margin: 8px 0 0; font-size: 15px; font-weight: 700; color: var(--brand-subtle); }
+
+  /* 언어 고르기 */
+  .langs {
+    display: flex; justify-content: center; gap: 6px;
+    margin: 18px auto 0; padding: 4px;
+    width: max-content;
+    background: rgba(255,255,255,0.8);
+    border-radius: 999px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+  .langs button {
+    appearance: none; border: 0; cursor: pointer;
+    font: inherit; font-size: 13px; font-weight: 800;
+    color: var(--brand-subtle);
+    padding: 7px 16px; border-radius: 999px;
+    background: transparent;
+    transition: background 0.15s, color 0.15s;
+  }
+  .langs button[aria-pressed="true"] {
+    background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+    color: #fff;
+  }
+  .langs button:focus-visible { outline: 3px solid var(--grad-end); outline-offset: 2px; }
+
+  /* 한 줄 소개 */
+  .intro {
+    margin: 26px 0 18px;
+    font-size: 16px; font-weight: 600;
+    color: rgba(59,59,79,0.82);
+    text-align: center;
+  }
+
+  /* 표시 알약 */
+  .badges {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 7px;
+    margin: 0 0 30px; padding: 0; list-style: none;
+  }
+  .badges li {
+    font-size: 12.5px; font-weight: 800;
+    color: var(--brand-ink);
+    background: rgba(255,255,255,0.85);
+    border: 1.5px solid rgba(59,59,79,0.08);
+    border-radius: 999px;
+    padding: 5px 12px;
+  }
+
+  /* 구획 제목 */
+  .sec {
+    margin: 32px 0 12px;
+    font-size: clamp(18px, 4.4vw, 21px); font-weight: 800;
+    letter-spacing: -0.015em;
+    color: var(--brand-ink);
+  }
+  .sec-note { margin: -6px 0 14px; font-size: 14px; font-weight: 600; color: var(--brand-subtle); }
+
+  /* 카드 */
+  .card {
+    background: #fff;
+    border: 1.5px solid rgba(59,59,79,0.08);
+    border-radius: 22px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  }
+  .card .tag {
+    display: inline-block;
+    font-size: 11.5px; font-weight: 800; letter-spacing: 0.02em;
+    color: #fff; background: var(--blue);
+    border-radius: 999px; padding: 3px 10px;
+    margin-bottom: 8px;
+  }
+  .card.alt .tag { background: var(--purple); }
+  .card h3 {
+    margin: 0 0 6px;
+    font-size: 18px; font-weight: 800; letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .card p { margin: 0 0 8px; font-size: 14.5px; color: rgba(59,59,79,0.75); }
+  .card p:last-child { margin-bottom: 0; }
+  .card ul { margin: 6px 0 0; padding-left: 20px; }
+  .card li { font-size: 14px; color: rgba(59,59,79,0.75); }
+
+  /* 놀이 열두 칸 */
+  .games {
+    display: grid; gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0; padding: 0; list-style: none;
+  }
+  @media (min-width: 560px) { .games { grid-template-columns: repeat(3, 1fr); } }
+  .games li {
+    background: #fff;
+    border: 1.5px solid rgba(59,59,79,0.08);
+    border-radius: 18px;
+    padding: 14px 14px 13px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  }
+  .games .ico { font-size: 26px; line-height: 1.1; display: block; }
+  .games b {
+    display: block; margin-top: 6px;
+    font-size: 15px; font-weight: 800; color: var(--ink);
+  }
+  .games small { display: block; font-size: 12.5px; font-weight: 700; color: var(--brand-subtle); }
+  .games span.desc { display: block; margin-top: 4px; font-size: 13px; color: rgba(59,59,79,0.7); }
+
+  /* 약속 목록 */
+  .promise { margin: 0; padding: 0; list-style: none; }
+  .promise li {
+    position: relative;
+    padding: 9px 0 9px 30px;
+    font-size: 14.5px; font-weight: 600;
+    color: rgba(59,59,79,0.8);
+    border-bottom: 1px solid rgba(59,59,79,0.07);
+  }
+  .promise li:last-child { border-bottom: 0; }
+  .promise li::before {
+    content: "✓";
+    position: absolute; left: 4px; top: 9px;
+    font-weight: 800; color: var(--green);
+  }
+
+  /* 문의 단추 */
+  .contact {
+    display: block; text-align: center;
+    margin: 24px 0 0; padding: 16px 18px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+    color: #fff; font-size: 16px; font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(102,140,252,0.35);
+  }
+  .contact span { display: block; font-size: 13px; font-weight: 600; opacity: 0.9; margin-top: 2px; }
+  .reply { margin: 10px 0 0; text-align: center; font-size: 13px; font-weight: 600; color: var(--brand-subtle); }
+
+  .links { margin: 18px 0 0; text-align: center; font-size: 14px; font-weight: 700; }
+  .links a { margin: 0 8px; }
+
+  a { color: #6E5BC7; font-weight: 700; }
+  code {
+    font-size: 13px;
+    background: rgba(59,59,79,0.06);
+    padding: 1px 5px; border-radius: 5px;
+  }
+
+  footer {
+    margin-top: 34px; text-align: center;
+    font-size: 12px; font-weight: 700;
+    color: rgba(59,59,79,0.45);
+  }
+  footer p { margin: 3px 0; }
+
+  /* 언어 전환 — 고르지 않은 언어만 숨기고, 보이는 쪽은 건드리지 않습니다.
+     한 번 숨긴 뒤 display:revert 로 되살리면 자기 display 를 가진 요소가 UA 기본값으로
+     돌아갑니다(.contact 는 block, .card 는 flex/grid). 숨기기만 하면 요소마다 예외를
+     적을 필요가 없습니다 — support.html 에서 단추가 깨진 적이 있습니다.
+     인쇄할 때는 두 언어를 다 보여 주므로 이 규칙을 화면에만 걸어 둡니다. */
+  @media screen {
+    html[lang="ko"] [data-lang]:not([data-lang="ko"]),
+    html[lang="en"] [data-lang]:not([data-lang="en"]) { display: none; }
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .langs { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <!-- 앱 아이콘과 같은 그림: 파랑→보라 네모 안 하얀 타일 2×2 (+ · 가 · A · 시계) -->
+    <svg class="mark" viewBox="0 0 100 100" role="img" aria-label="나랑 놀자! / Play with Me!">
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#668CFC"/>
+          <stop offset="1" stop-color="#A170F2"/>
+        </linearGradient>
+      </defs>
+      <rect width="100" height="100" rx="24" fill="url(#g)"/>
+      <g fill="#fff" fill-opacity="0.97">
+        <rect x="12.9" y="12.9" width="34.2" height="34.2" rx="9.4"/>
+        <rect x="52.9" y="12.9" width="34.2" height="34.2" rx="9.4"/>
+        <rect x="12.9" y="52.9" width="34.2" height="34.2" rx="9.4"/>
+        <rect x="52.9" y="52.9" width="34.2" height="34.2" rx="9.4"/>
+      </g>
+      <!-- 글자는 아이콘 스크립트(Tools/make_icon.swift)의 타일 순서·색을 그대로 따릅니다 -->
+      <g font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', system-ui, sans-serif"
+         font-weight="800" text-anchor="middle" dominant-baseline="central">
+        <text x="30" y="31" font-size="26" fill="#4F8CF7">+</text>
+        <text x="70" y="31" font-size="19" fill="#F0669E">가</text>
+        <text x="30" y="71" font-size="23" fill="#9470F0">A</text>
+      </g>
+      <!-- 넷째 타일은 시계입니다. 아이콘 스크립트의 drawClock 과 같은 비율:
+           반지름 = 타일*0.34 · 선 굵기 = 타일*0.085 · 분침 위로 r*0.66 · 시침 오른쪽 r*0.46 -->
+      <g stroke="#3DB8D9" stroke-width="2.9" stroke-linecap="round" fill="none">
+        <circle cx="70" cy="71" r="11.6"/>
+        <path d="M70 71 L70 63.3"/>
+        <path d="M70 71 L75.3 71" stroke-width="3.2"/>
+      </g>
+    </svg>
+
+    <h1>
+      <span data-lang="ko">나랑 놀자!</span>
+      <span data-lang="en">Play with Me!</span>
+    </h1>
+    <p class="sub">
+      <span data-lang="ko">열두 가지 놀이와 오늘의 도전 · 만 5세부터</span>
+      <span data-lang="en">Twelve games and a daily challenge · ages 5 and up</span>
+    </p>
+
+    <nav class="langs" aria-label="Language">
+      <button type="button" data-set-lang="ko" aria-pressed="true">한국어</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">English</button>
+    </nav>
+  </header>
+
+  <main>
+    <p class="intro" data-lang="ko">
+      숫자부터 칠교까지 <strong>열두 가지 놀이</strong>를 한 앱에 담고,
+      그 가운데 세 놀이를 뽑아 <strong>하루 15문제</strong>로 내 줍니다.
+      광고도 결제도 계정도 없고, 모든 것이 아이 기기 안에서만 돕니다.
+    </p>
+    <p class="intro" data-lang="en">
+      <strong>Twelve games</strong> in one app — from counting to tangram — and each day it picks
+      three of them for a <strong>15-question challenge</strong>.
+      No ads, no purchases, no account: everything stays on the child's device.
+    </p>
+
+    <ul class="badges" data-lang="ko">
+      <li>만 5세 이상</li>
+      <li>iPhone · iPad</li>
+      <li>iOS 17 이상</li>
+      <li>한국어 · 영어</li>
+      <li>광고 없음</li>
+      <li>인앱 결제 없음</li>
+      <li>계정 없음</li>
+      <li>인터넷 없이도</li>
+      <li>읽어주기 지원</li>
+    </ul>
+    <ul class="badges" data-lang="en">
+      <li>Ages 5+</li>
+      <li>iPhone · iPad</li>
+      <li>iOS 17+</li>
+      <li>Korean · English</li>
+      <li>No ads</li>
+      <li>No in-app purchases</li>
+      <li>No account</li>
+      <li>Works offline</li>
+      <li>Reads aloud</li>
+    </ul>
+
+    <!-- ── 두 가지 방식 ───────────────────────────────── -->
+    <h2 class="sec" data-lang="ko">노는 방법은 두 가지예요</h2>
+    <h2 class="sec" data-lang="en">Two ways to play</h2>
+    <p class="sec-note" data-lang="ko">
+      매일 할 몫은 앱이 정해 주고, 더 하고 싶은 놀이는 아이가 고릅니다.
+    </p>
+    <p class="sec-note" data-lang="en">
+      The app decides the daily portion; the child chooses what to play beyond it.
+    </p>
+
+    <div class="card" data-lang="ko">
+      <span class="tag">오늘의 도전</span>
+      <h3>🔥 하루 15문제, 끝나면 스티커 한 칸</h3>
+      <p>부모가 넣어 둔 놀이에서 <strong>매일 세 놀이씩</strong> 골라 15문제를 냅니다.
+        고른 묶음은 날마다 바뀌어서, 어제는 한글·국기·색이었다면 오늘은 숫자·시계·달력입니다.</p>
+      <p>하루를 끝내면 <strong>미션 보드</strong>에 스티커가 한 칸 붙고, 정한 기간(15·30·60·90일)을
+        다 채우면 부모가 약속한 보상이 나옵니다 — 보상 자리에 사진 한 장을 넣어 두면
+        아이가 무엇을 향해 가는지 눈으로 봅니다.</p>
+      <p>기간은 날짜가 아니라 <strong>끝낸 횟수</strong>로 셉니다. 하루 쉬어도 진도가 밀리지 않아요.
+        한 번에 다 맞히지 못한 단계는 다음 도전에 한 번 더 나옵니다.</p>
+    </div>
+    <div class="card" data-lang="en">
+      <span class="tag">Today's Challenge</span>
+      <h3>🔥 Fifteen questions a day, then a sticker</h3>
+      <p>From the games a grown-up picked, the app chooses <strong>three each day</strong> and sets
+        fifteen questions. The trio changes daily: Hangul, flags and colours yesterday; numbers,
+        clock and calendar today.</p>
+      <p>Finishing a day adds one sticker to the <strong>Mission Board</strong>, and filling the
+        chosen length (15, 30, 60 or 90 days) earns the reward a grown-up promised — add a photo of
+        it and the child can see what they are working towards.</p>
+      <p>The length counts <strong>days finished</strong>, not calendar days, so a day off never puts
+        anyone behind. A level where something was missed comes round once more next time.</p>
+    </div>
+
+    <div class="card alt" data-lang="ko">
+      <span class="tag">놀이터</span>
+      <h3>🎠 열두 놀이, 217단계를 마음껏</h3>
+      <p>첫 화면 아래에 놀이 열두 칸이 <strong>한 화면에 다 보입니다.</strong> 자리가 늘 같아서
+        아이가 매번 다시 찾지 않아요. 글자를 못 읽어도 그림으로 고릅니다.</p>
+      <p>단계는 앞 단계를 <strong>한 번 마치면</strong> 다음이 열립니다. 잘 맞혔는지는 세지 않아요 —
+        끝까지 한 것이 다음을 엽니다. 마친 단계에는 초록 체크가 붙어서 어디까지 했는지 보입니다.</p>
+      <p>놀이터를 <strong>오늘의 도전을 끝낸 뒤에</strong> 열리게 할 수도 있고, 처음부터 열어
+        둘 수도 있습니다(설정의 ‘자유로운 놀이터 사용’).</p>
+    </div>
+    <div class="card alt" data-lang="en">
+      <span class="tag">Playground</span>
+      <h3>🎠 Twelve games, 217 levels, free rein</h3>
+      <p>All twelve games sit <strong>on one screen</strong> under the first view. Their places never
+        move, so a child never has to hunt for one — and picks by picture, not by reading.</p>
+      <p>Finishing a level <strong>once</strong> opens the next. How well it went is not counted —
+        going all the way through is what opens the next one. Finished levels carry a green tick so
+        progress is visible.</p>
+      <p>The Playground can stay locked <strong>until the daily challenge is done</strong>, or be
+        open from the start (“Free playground” in settings).</p>
+    </div>
+
+    <!-- ── 열두 놀이 ───────────────────────────────── -->
+    <h2 class="sec" data-lang="ko">열두 가지 놀이</h2>
+    <h2 class="sec" data-lang="en">The twelve games</h2>
+    <p class="sec-note" data-lang="ko">쉬운 것부터 차례로 어려워집니다. 모두 합해 217단계.</p>
+    <p class="sec-note" data-lang="en">Each ladder starts easy and climbs. 217 levels in all.</p>
+
+    <ul class="games" data-lang="ko">
+      <li><span class="ico" aria-hidden="true">🔢</span><b>숫자 놀이</b><small>20단계</small>
+        <span class="desc">세기 · 이웃수 · 더하기부터 나누기까지</span></li>
+      <li><span class="ico" aria-hidden="true">🇰🇷</span><b>한글 놀이</b><small>20단계</small>
+        <span class="desc">자모 따라쓰기 · 글자 만들기 · 낱말</span></li>
+      <li><span class="ico" aria-hidden="true">🔤</span><b>ABC 놀이</b><small>20단계</small>
+        <span class="desc">대소문자 짝 찾기 · 파닉스 · 낱말</span></li>
+      <li><span class="ico" aria-hidden="true">🚩</span><b>국기 놀이</b><small>10단계</small>
+        <span class="desc">가까운 나라부터 먼 나라까지</span></li>
+      <li><span class="ico" aria-hidden="true">🕐</span><b>시계 놀이</b><small>15단계</small>
+        <span class="desc">정각부터 초까지 · 동그란 시계와 숫자 시계</span></li>
+      <li><span class="ico" aria-hidden="true">✖️</span><b>구구단 놀이</b><small>21단계</small>
+        <span class="desc">보고 들으며 외우기 → 섞어서 풀기</span></li>
+      <li><span class="ico" aria-hidden="true">📅</span><b>달력 놀이</b><small>19단계</small>
+        <span class="desc">요일·달 이름부터 달력 읽기까지</span></li>
+      <li><span class="ico" aria-hidden="true">🔷</span><b>도형 놀이</b><small>15단계</small>
+        <span class="desc">모양 이름 · 변의 개수</span></li>
+      <li><span class="ico" aria-hidden="true">🎨</span><b>색 놀이</b><small>15단계</small>
+        <span class="desc">색 이름 · 섞으면 무슨 색</span></li>
+      <li><span class="ico" aria-hidden="true">🌀</span><b>미로 놀이</b><small>15단계</small>
+        <span class="desc">손가락으로 길을 찾아 나가기</span></li>
+      <li><span class="ico" aria-hidden="true">🧩</span><b>칠교 놀이</b><small>47도안</small>
+        <span class="desc">일곱 조각으로 모양 맞추기</span></li>
+      <li><span class="ico" aria-hidden="true">🖍️</span><b>그리기 놀이</b><small>자유</small>
+        <span class="desc">크레용·물감으로 그리고 사진으로 저장</span></li>
+    </ul>
+    <ul class="games" data-lang="en">
+      <li><span class="ico" aria-hidden="true">🔢</span><b>Numbers</b><small>20 levels</small>
+        <span class="desc">Counting, neighbours, add to divide</span></li>
+      <li><span class="ico" aria-hidden="true">🇰🇷</span><b>Hangul</b><small>20 levels</small>
+        <span class="desc">Tracing jamo, building syllables, words</span></li>
+      <li><span class="ico" aria-hidden="true">🔤</span><b>ABC</b><small>20 levels</small>
+        <span class="desc">Upper/lower pairs, phonics, words</span></li>
+      <li><span class="ico" aria-hidden="true">🚩</span><b>Flags</b><small>10 levels</small>
+        <span class="desc">From nearby countries to far-away ones</span></li>
+      <li><span class="ico" aria-hidden="true">🕐</span><b>Clock</b><small>15 levels</small>
+        <span class="desc">O'clock to seconds, round and digital</span></li>
+      <li><span class="ico" aria-hidden="true">✖️</span><b>Times tables</b><small>21 levels</small>
+        <span class="desc">Chant along, then mixed practice</span></li>
+      <li><span class="ico" aria-hidden="true">📅</span><b>Calendar</b><small>19 levels</small>
+        <span class="desc">Weekday and month names to reading a month</span></li>
+      <li><span class="ico" aria-hidden="true">🔷</span><b>Shapes</b><small>15 levels</small>
+        <span class="desc">Shape names, counting sides</span></li>
+      <li><span class="ico" aria-hidden="true">🎨</span><b>Colours</b><small>15 levels</small>
+        <span class="desc">Colour names, and what mixing makes</span></li>
+      <li><span class="ico" aria-hidden="true">🌀</span><b>Maze</b><small>15 levels</small>
+        <span class="desc">Trace a way out with a finger</span></li>
+      <li><span class="ico" aria-hidden="true">🧩</span><b>Tangram</b><small>47 puzzles</small>
+        <span class="desc">Fit seven pieces into a shape</span></li>
+      <li><span class="ico" aria-hidden="true">🖍️</span><b>Drawing</b><small>free play</small>
+        <span class="desc">Crayons and paint, saved to Photos</span></li>
+    </ul>
+
+    <!-- ── 아이를 위해 지킨 것 ───────────────────────── -->
+    <h2 class="sec" data-lang="ko">아이를 위해 지킨 것</h2>
+    <h2 class="sec" data-lang="en">What we kept for the child</h2>
+
+    <div class="card" data-lang="ko">
+      <ul class="promise">
+        <li><strong>점수도 별도 보여 주지 않습니다.</strong> 한 번에 다 맞히지 못한 아이에게
+          끝낸 순간이 ‘덜 받은 순간’이 되지 않도록, 마치면 칭찬 한마디로 끝냅니다.</li>
+        <li><strong>틀려도 빨간 표시가 없습니다.</strong> 살짝 흔들리고 흐려지기만 합니다 —
+          다섯 살에게 빨강은 ‘실패’보다 ‘혼남’입니다.</li>
+        <li><strong>맞혀도 요란하지 않습니다.</strong> 조용히 다음 문제로 넘어갑니다.</li>
+        <li><strong>글을 못 읽어도 혼자 합니다.</strong> 문제를 소리로 읽어 주고
+          (빠르기도 고를 수 있습니다), 화면은 그림·색으로 말합니다.</li>
+        <li><strong>한 화면에 다 보입니다.</strong> 아이에게 화면 밖은 ‘없는 것’이라
+          놀이 열두 칸이 스크롤 없이 보이고 자리도 바뀌지 않습니다.</li>
+        <li><strong>어두운 화면으로 뒤집히지 않습니다.</strong> 늘 밝은 색으로 고정해서
+          아이가 배운 색이 그대로 보입니다.</li>
+      </ul>
+    </div>
+    <div class="card" data-lang="en">
+      <ul class="promise">
+        <li><strong>No scores and no stars on screen.</strong> So that finishing never becomes the
+          moment a child “got fewer”, a level ends with one line of praise.</li>
+        <li><strong>A wrong answer is never red.</strong> It only shakes a little and dims — to a
+          five-year-old, red reads as being told off rather than as a miss.</li>
+        <li><strong>A right answer is quiet too.</strong> It simply moves on.</li>
+        <li><strong>A child who cannot read can still play alone.</strong> Questions are read aloud
+          (at a speed you choose) and the screen speaks in pictures and colour.</li>
+        <li><strong>Everything fits one screen.</strong> Off-screen means “not there” to a child, so
+          all twelve games are visible without scrolling and never move about.</li>
+        <li><strong>It never flips to a dark screen.</strong> The light palette is fixed, so colours
+          stay the ones the child learned.</li>
+      </ul>
+    </div>
+
+    <!-- ── 부모를 위한 것 ───────────────────────────── -->
+    <h2 class="sec" data-lang="ko">부모를 위한 것</h2>
+    <h2 class="sec" data-lang="en">For grown-ups</h2>
+    <p class="sec-note" data-lang="ko">
+      설정은 <strong>어른 확인</strong> 뒤에 있습니다 — “칠 곱하기 팔”처럼 글자로 적은 곱셈이 나옵니다.
+    </p>
+    <p class="sec-note" data-lang="en">
+      Settings sit behind a <strong>parental gate</strong> — a multiplication written in words
+      (“seven times eight”).
+    </p>
+
+    <div class="card" data-lang="ko">
+      <h3>⚙️ 네 갈래로 나눈 설정</h3>
+      <ul>
+        <li><strong>한눈에 보기</strong> — 도전이 몇째 날인지, 놀이마다 몇 단계를 마쳤는지,
+          한 번 더 볼 단계는 무엇인지. 점수나 등수는 없습니다.</li>
+        <li><strong>오늘의 도전</strong> — 넣을 놀이, 기간, 보상(이름·사진),
+          그리고 <strong>매일 알림</strong>(끝낸 날에는 보내지 않습니다).</li>
+        <li><strong>소리와 읽어주기</strong> — 효과음·읽어주기·진동을 따로,
+          읽어주는 빠르기와 목소리 들어보기.</li>
+        <li><strong>놀이 설정</strong> — 문제에 쓰는 말(한국어·영어·섞어서)과
+          숫자 놀이의 연산 고르기, 구구단 범위, 달력의 특별한 날.</li>
+      </ul>
+    </div>
+    <div class="card" data-lang="en">
+      <h3>⚙️ Settings in four pages</h3>
+      <ul>
+        <li><strong>At a glance</strong> — which day of the challenge, how many levels are finished
+          per game, which levels are worth one more go. No scores, no rankings.</li>
+        <li><strong>Today's Challenge</strong> — which games, how long, the reward (name and photo),
+          and the <strong>daily reminder</strong> (never sent on a day already finished).</li>
+        <li><strong>Sound &amp; reading</strong> — separate switches for effects, reading and
+          haptics, plus reading speed and a voice preview.</li>
+        <li><strong>Game settings</strong> — the language used in questions (Korean, English or
+          mixed), which arithmetic operations appear, how far the times tables go, and the family's
+          special days in the calendar game.</li>
+      </ul>
+    </div>
+
+    <div class="card" data-lang="ko">
+      <h3>🔒 모으는 정보가 없습니다</h3>
+      <p>계정도 서버도 분석 도구도 없습니다. 열린 단계·소리 스위치·아이 이름·도전 계획은
+        <strong>이 기기 안에만</strong> 남고, 앱을 지우면 함께 사라집니다. 개발자는 그 값을 볼 수 없습니다.</p>
+      <p>매일 알림도 기기 안에서 예약하는 로컬 알림이라 푸시 서버를 쓰지 않습니다.
+        앱 밖으로 나가는 길은 방침 보기와 미션 보드 내보내기 둘뿐이고, 둘 다 어른 확인 뒤에 있습니다.</p>
+      <p><a href="privacy.html">개인정보처리방침 전문 보기 →</a></p>
+    </div>
+    <div class="card" data-lang="en">
+      <h3>🔒 Nothing is collected</h3>
+      <p>No account, no server, no analytics. Unlocked levels, the sound switches, the child's name
+        and the challenge plan live <strong>on this device only</strong> and go away with the app.
+        The developer cannot see any of it.</p>
+      <p>The daily reminder is a local notification scheduled on the device, so no push server is
+        involved. The only two ways out of the app are this policy and exporting the Mission Board,
+        and both sit behind the parental gate.</p>
+      <p><a href="privacy.html">Read the full privacy policy →</a></p>
+    </div>
+
+    <!-- ── 출시 ───────────────────────────────────── -->
+    <h2 class="sec" data-lang="ko">출시 준비 중이에요</h2>
+    <h2 class="sec" data-lang="en">Coming soon</h2>
+    <div class="card" data-lang="ko">
+      <p>App Store 심사를 준비하고 있습니다. 올라가면 이 페이지에 내려받기 단추가 생깁니다.
+        먼저 써 보고 싶거나 바라는 놀이가 있다면 메일로 알려 주세요 — 한 사람이 만드는 앱이라
+        의견이 그대로 들어갑니다.</p>
+    </div>
+    <div class="card" data-lang="en">
+      <p>We are preparing for App Store review; a download button will appear here once it is live.
+        If you would like to try it early, or there is a game you wish it had, just send an email —
+        this is a one-person app, so suggestions go straight in.</p>
+    </div>
+
+    <a class="contact" data-lang="ko" href="mailto:baby.planner.wooni@gmail.com?subject=%5B%EB%82%98%EB%9E%91%20%EB%86%80%EC%9E%90!%5D%20%EB%AC%B8%EC%9D%98">
+      메일로 문의하기
+      <span>baby.planner.wooni@gmail.com</span>
+    </a>
+    <a class="contact" data-lang="en" href="mailto:baby.planner.wooni@gmail.com?subject=%5BPlay%20with%20Me!%5D%20Hello">
+      Email us
+      <span>baby.planner.wooni@gmail.com</span>
+    </a>
+    <p class="reply" data-lang="ko">보통 2~3일 안에 답장합니다.</p>
+    <p class="reply" data-lang="en">We usually reply within 2–3 days.</p>
+
+    <p class="links" data-lang="ko">
+      <a href="support.html">도움말 · 자주 묻는 것</a>·<a href="privacy.html">개인정보처리방침</a>
+    </p>
+    <p class="links" data-lang="en">
+      <a href="support.html">Help &amp; FAQ</a>·<a href="privacy.html">Privacy Policy</a>
+    </p>
+  </main>
+
+  <footer>
+    <p data-lang="ko">최종 수정일: 2026년 10월 19일</p>
+    <p data-lang="en">Last updated: 19 October 2026</p>
+    <p>© Copyright Wooni</p>
+    <p><a href="privacy.html" data-lang="ko">개인정보처리방침</a><a href="privacy.html" data-lang="en">Privacy Policy</a></p>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var buttons = document.querySelectorAll("[data-set-lang]");
+
+    function apply(lang) {
+      document.documentElement.lang = lang;
+      buttons.forEach(function (b) {
+        b.setAttribute("aria-pressed", String(b.dataset.setLang === lang));
+      });
+      try { localStorage.setItem("pwm-privacy-lang", lang); } catch (e) {}
+    }
+
+    // 세 쪽이 같은 열쇠를 씁니다 — 소개에서 영어를 골랐으면 방침도 영어로 열립니다.
+    var saved = null;
+    try { saved = localStorage.getItem("pwm-privacy-lang"); } catch (e) {}
+    var prefersKo = (navigator.language || "en").toLowerCase().indexOf("ko") === 0;
+    apply(saved === "ko" || saved === "en" ? saved : (prefersKo ? "ko" : "en"));
+
+    buttons.forEach(function (b) {
+      b.addEventListener("click", function () { apply(b.dataset.setLang); });
+    });
+  })();
+</script>
+</body>
+</html>

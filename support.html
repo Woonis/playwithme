@@ -170,7 +170,7 @@
 <div class="wrap">
 
   <header>
-    <!-- 앱 아이콘과 같은 그림: 파랑→보라 네모 안 하얀 타일 2×2 (+ · 가 · A · ★) -->
+    <!-- 앱 아이콘과 같은 그림: 파랑→보라 네모 안 하얀 타일 2×2 (+ · 가 · A · 시계) -->
     <svg class="mark" viewBox="0 0 100 100" role="img" aria-label="나랑 놀자! / Play with Me!">
       <defs>
         <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
@@ -191,7 +191,13 @@
         <text x="30" y="31" font-size="26" fill="#4F8CF7">+</text>
         <text x="70" y="31" font-size="19" fill="#F0669E">가</text>
         <text x="30" y="71" font-size="23" fill="#9470F0">A</text>
-        <text x="70" y="71" font-size="22" fill="#FFC233">★</text>
+        <!-- 넷째 타일은 시계입니다. 아이콘 스크립트의 drawClock 과 같은 비율:
+             반지름 = 타일*0.34 · 선 굵기 = 타일*0.085 · 분침 위로 r*0.66 · 시침 오른쪽 r*0.46 -->
+        <g stroke="#3DB8D9" stroke-width="2.9" stroke-linecap="round" fill="none">
+          <circle cx="70" cy="71" r="11.6"/>
+          <path d="M70 71 L70 63.3"/>
+          <path d="M70 71 L75.3 71" stroke-width="3.2"/>
+        </g>
       </g>
     </svg>
 
@@ -227,6 +233,9 @@
         <h2>설정은 어디 있나요?</h2>
         <p>첫 화면 오른쪽 위 톱니바퀴입니다. 아이가 혼자 바꾸지 못하게 <strong>어른 확인</strong>이
           있어요 — “칠 곱하기 팔”처럼 <em>글자로 적은</em> 곱셈이 나오니, 숫자를 곱해 답을 적으면 열립니다.</p>
+        <p>들어가면 네 갈래입니다 — <em>한눈에 보기</em>(지금까지 한 것) ·
+          <em>오늘의 도전</em>(놀이·기간·보상·알림) · <em>소리와 읽어주기</em> ·
+          <em>놀이 설정</em>(문제에 쓰는 말과 놀이별 설정).</p>
       </div>
     </div>
     <div class="card" data-lang="en">
@@ -236,6 +245,9 @@
         <p>The gear button at the top right of the first screen. A <strong>parental gate</strong> keeps
           children out — it shows a multiplication written <em>in words</em> (“seven times eight”), so
           type the answer as digits to continue.</p>
+        <p>Inside there are four pages — <em>At a glance</em> (what has been done so far),
+          <em>Today's Challenge</em> (games, length, reward, reminder), <em>Sound &amp; reading</em>,
+          and <em>Game settings</em> (the language used in questions, plus per-game options).</p>
       </div>
     </div>
 
@@ -244,17 +256,22 @@
       <span class="emoji" aria-hidden="true">➕</span>
       <div>
         <h2>문제가 너무 어려워요</h2>
-        <p>설정의 <em>연산 고르기</em>에서 더하기·빼기·곱하기·나누기를 켜고 끌 수 있어요.
+        <p><em>설정 → 놀이 설정 → 연산 고르기</em>에서 더하기·빼기·곱하기·나누기를 켜고 끌 수 있어요.
           다섯 살이라면 <strong>더하기만</strong> 켜 두고 시작해 보세요. 켜 둔 연산만 숫자 놀이에 나옵니다.</p>
+        <p>같은 쪽의 <em>문제에 쓰는 말</em>도 봐 주세요. ‘섞어서’로 두면 한 문제 안에 한국어와
+          영어가 함께 나와서, 아직 한 말만 아는 아이에게는 어렵습니다.</p>
       </div>
     </div>
     <div class="card" data-lang="en">
       <span class="emoji" aria-hidden="true">➕</span>
       <div>
         <h2>The questions are too hard</h2>
-        <p>In settings, <em>Choose operations</em> turns addition, subtraction, multiplication and
-          division on or off. For a five-year-old, start with <strong>addition only</strong> — just the
-          operations you leave on will show up in the number game.</p>
+        <p><em>Settings → Game settings → Choose operations</em> turns addition, subtraction,
+          multiplication and division on or off. For a five-year-old, start with
+          <strong>addition only</strong> — just the operations you leave on will show up in the
+          number game.</p>
+        <p>Check <em>Language used in questions</em> on the same page too. Set to “Mixed”, one
+          question can carry both Korean and English, which is hard for a child who knows only one.</p>
       </div>
     </div>
 
@@ -262,18 +279,23 @@
     <div class="card" data-lang="ko">
       <span class="emoji" aria-hidden="true">🔊</span>
       <div>
-        <h2>목소리가 기계 같아요</h2>
+        <h2>목소리가 기계 같아요 / 너무 빨라요</h2>
         <p>iOS 기본 목소리라서 그렇습니다. <em>설정 앱 &gt; 손쉬운 사용 &gt; 콘텐츠 말하기 &gt; 음성</em>에서
-          목소리를 한 번 내려받으면 훨씬 자연스러워져요. 앱 설정의 <em>목소리 들어보기</em>로 바로 확인할 수 있습니다.</p>
+          목소리를 한 번 내려받으면 훨씬 자연스러워져요. 앱의 <em>설정 → 소리와 읽어주기 →
+          목소리 들어보기</em>로 바로 확인할 수 있습니다.</p>
+        <p>같은 쪽의 <em>읽어주는 빠르기</em>를 <strong>느리게</strong>로 두면 한 글자씩 또박또박
+          읽어 줍니다. 처음 듣는 말이 많은 아이에게 도움이 됩니다.</p>
       </div>
     </div>
     <div class="card" data-lang="en">
       <span class="emoji" aria-hidden="true">🔊</span>
       <div>
-        <h2>The voice sounds robotic</h2>
+        <h2>The voice sounds robotic / too fast</h2>
         <p>That's the basic iOS voice. Download a better one in
           <em>Settings &gt; Accessibility &gt; Spoken Content &gt; Voices</em> and read-aloud improves a lot.
-          Use <em>Hear the voice</em> in the app's settings to check.</p>
+          Use <em>Settings → Sound &amp; reading → Hear the voice</em> in the app to check.</p>
+        <p>On the same page, setting <em>Reading speed</em> to <strong>Slow</strong> makes the voice
+          say each word clearly — helpful when most of the words are new to the child.</p>
       </div>
     </div>
 
@@ -282,16 +304,19 @@
       <span class="emoji" aria-hidden="true">🔇</span>
       <div>
         <h2>소리를 끄고 싶어요</h2>
-        <p>설정의 <em>효과음</em>과 <em>문제 읽어주기</em>를 따로 끌 수 있어요.
-          읽어주기만 끄고 효과음은 남겨 두는 것도 됩니다.</p>
+        <p><em>설정 → 소리와 읽어주기</em>에서 <em>효과음</em>·<em>문제 읽어주기</em>·<em>진동</em>을
+          따로 끌 수 있어요. 읽어주기만 끄고 효과음은 남겨 두는 것도 됩니다.
+          미로 놀이에서 벽에 닿는 느낌은 <em>진동</em>이라, 소리는 꺼도 그 느낌만 남길 수 있습니다.</p>
       </div>
     </div>
     <div class="card" data-lang="en">
       <span class="emoji" aria-hidden="true">🔇</span>
       <div>
         <h2>I want to turn the sound off</h2>
-        <p>Settings has separate switches for <em>Sound effects</em> and <em>Read questions aloud</em>,
-          so you can silence the reading and keep the effects, or vice versa.</p>
+        <p><em>Settings → Sound &amp; reading</em> has separate switches for <em>Sound effects</em>,
+          <em>Read questions aloud</em> and <em>Haptics</em>, so you can silence the reading and keep
+          the effects, or vice versa. The bump you feel when the maze wall is touched is
+          <em>Haptics</em> — you can keep that and still turn the sound off.</p>
       </div>
     </div>
 
@@ -300,16 +325,75 @@
       <span class="emoji" aria-hidden="true">⭐️</span>
       <div>
         <h2>단계가 잠겨 있어요 / 처음부터 하고 싶어요</h2>
-        <p>앞 단계에서 별을 받으면 다음 단계가 열립니다. 아이를 바꿔 처음부터 하려면
-          설정의 <em>기록 지우기</em>를 누르세요 — 별과 열린 단계가 모두 처음으로 돌아갑니다.</p>
+        <p>앞 단계를 한 번 마치면 다음 단계가 열립니다. 잠긴 단계에는 자물쇠, 한 번이라도 마친
+          단계에는 초록 체크가 붙어서 아이가 어디까지 했는지 보입니다. 오늘의 도전을 끝까지 다
+          마치면 놀이터의 모든 단계가 한꺼번에 열려요.</p>
+        <p>처음부터 하려면 <strong>지우기 단추가 둘이고 범위가 다릅니다.</strong>
+          <em>설정 → 놀이터 기록 지우기</em>는 놀이터의 깬 단계와 열린 단계를,
+          <em>설정 → 오늘의 도전 → 도전 진행 지우기</em>는 모은 스티커와 끝낸 날수를 지웁니다.
+          아이를 바꿔 처음부터 한다면 둘 다 누르세요 — 이름·고른 놀이·보상은 그대로 남습니다.</p>
       </div>
     </div>
     <div class="card" data-lang="en">
       <span class="emoji" aria-hidden="true">⭐️</span>
       <div>
         <h2>A level is locked / I want to start over</h2>
-        <p>Earning stars on a level unlocks the next one. To hand the app to another child, tap
-          <em>Reset progress</em> in settings — stars and unlocked levels all go back to the start.</p>
+        <p>Finishing a level once unlocks the next one. Locked levels carry a padlock and finished
+          ones a green tick, so a child can see how far they got. Finishing the whole challenge
+          unlocks every level in the Playground at once.</p>
+        <p>To start over, note that <strong>there are two erase buttons with different reach</strong>.
+          <em>Settings → Erase playground progress</em> clears the levels cleared and unlocked in the
+          Playground; <em>Settings → Today's Challenge → Erase challenge progress</em> clears the
+          stickers and the days finished. Handing the app to another child, press both — the name,
+          the chosen games and the reward stay.</p>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="card" data-lang="ko">
+      <span class="emoji" aria-hidden="true">🔔</span>
+      <div>
+        <h2>오늘의 도전을 자꾸 잊어버려요</h2>
+        <p><em>설정 → 오늘의 도전 → 매일 알림</em>을 켜고 시간을 정해 주세요(기본 저녁 7시).
+          <strong>이미 끝낸 날에는 보내지 않습니다.</strong> 기기 안에서 예약하는 알림이라
+          서버를 거치지 않고, 끄면 예약한 것이 모두 지워집니다.</p>
+        <p>알림이 오지 않으면 <em>iOS 설정 앱 &gt; 알림</em>에서 이 앱의 알림이 꺼져 있는지
+          봐 주세요.</p>
+      </div>
+    </div>
+    <div class="card" data-lang="en">
+      <span class="emoji" aria-hidden="true">🔔</span>
+      <div>
+        <h2>We keep forgetting Today's Challenge</h2>
+        <p>Turn on <em>Settings → Today's Challenge → Daily reminder</em> and pick a time (7pm by
+          default). <strong>Nothing is sent on a day already finished.</strong> It is scheduled on
+          the device, so no server is involved, and turning it off removes every scheduled one.</p>
+        <p>If no reminder arrives, check whether notifications for this app are off in
+          <em>iOS Settings &gt; Notifications</em>.</p>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="card" data-lang="ko">
+      <span class="emoji" aria-hidden="true">📊</span>
+      <div>
+        <h2>아이가 어디까지 했는지 보고 싶어요</h2>
+        <p><em>설정 → 한눈에 보기</em>에 도전이 몇째 날인지, 놀이마다 몇 단계를 마쳤는지,
+          <em>한 번 더 볼 단계</em>가 한 쪽에 모여 있습니다.</p>
+        <p>한 번에 다 맞히지 못한 단계는 다음 도전에서 한 번 더 나오고, 다 맞히면 목록에서
+          사라집니다. <strong>점수나 등수는 어디에도 없습니다</strong> — 끝까지 한 것만 셉니다.</p>
+      </div>
+    </div>
+    <div class="card" data-lang="en">
+      <span class="emoji" aria-hidden="true">📊</span>
+      <div>
+        <h2>I want to see how far my child got</h2>
+        <p><em>Settings → At a glance</em> gathers it on one page: which day of the challenge you
+          are on, how many levels are finished in each game, and the
+          <em>levels worth one more go</em>.</p>
+        <p>A level where something was missed comes round once more in the next challenge and then
+          leaves the list. <strong>There are no scores or rankings anywhere</strong> — only finishing
+          counts.</p>
       </div>
     </div>
 
@@ -333,25 +417,41 @@
           <li><strong>한글 놀이</strong> 20단계 — 자모 따라쓰기, 자모 모아 글자 만들기, 낱말과 그림</li>
           <li><strong>ABC 놀이</strong> 20단계 — 대소문자 따라쓰기와 짝 찾기, 파닉스(첫소리), 낱말과 그림</li>
           <li><strong>국기 놀이</strong> 10단계 — 가까운 나라부터 먼 나라까지 국기 찾기</li>
+          <li><strong>시계 놀이</strong> 15단계 — 정각부터 초까지. 동그란 시계와 숫자 시계가 번갈아</li>
+          <li><strong>구구단 놀이</strong> 21단계 — 보고 들으며 외우기부터 섞어서 풀기까지</li>
+          <li><strong>달력 놀이</strong> 19단계 — 요일·달 이름부터 달력 읽기까지</li>
+          <li><strong>도형 놀이</strong> 15단계 — 모양 이름부터 변의 개수까지</li>
+          <li><strong>색 놀이</strong> 15단계 — 색 이름부터 섞은 색까지</li>
+          <li><strong>미로 놀이</strong> 15단계 — 손가락으로 길을 찾아 나가기</li>
+          <li><strong>칠교 놀이</strong> 47도안 — 일곱 조각으로 모양 맞추기</li>
+          <li><strong>그리기 놀이</strong> — 크레용·물감으로 그리고 사진으로 저장</li>
         </ul>
+        <p>여기에 <strong>오늘의 도전</strong>이 더해집니다. 부모가 고른 놀이에서 매일 15문제가
+          나오고, 하루를 끝내면 미션 보드에 스티커가 한 칸 붙습니다. 기간(15·30·60·90일)을
+          다 채우면 약속한 보상을 줍니다.</p>
 
         <h3>어떤 기기에서 되나요?</h3>
-        <p>iOS 17 이상의 iPhone과 iPad에서 됩니다. 아이패드는 가로·세로 모두 쓸 수 있습니다.</p>
+        <p>iOS 17 이상의 iPhone과 iPad에서 됩니다. 아이패드는 가로·세로 모두 쓸 수 있습니다.
+          아이폰은 세로로 고정하되 <strong>그리기 놀이만 가로로 돌아갑니다</strong> — 도화지가
+          넓어야 그릴 자리가 생기기 때문입니다. 돌리면 그린 그림은 지워지지 않고 새 화면에
+          맞춰 다시 놓입니다.</p>
 
         <h3>인터넷이 필요한가요?</h3>
         <p>아닙니다. 모든 놀이가 인터넷 없이 됩니다. 비행기나 차 안에서도 그대로 쓸 수 있어요.</p>
 
         <h3>글을 못 읽는 아이도 할 수 있나요?</h3>
         <p>네. 문제를 소리로 읽어 주고, 그림과 색으로 알려 주기 때문에 혼자 할 수 있습니다.
-          틀렸을 때는 빨간 표시 대신 살짝 흔들리기만 해서 아이가 겁내지 않습니다.</p>
+          틀렸을 때는 빨간 표시 대신 살짝 흔들리기만 해서 아이가 겁내지 않습니다. 맞혔을 때도 점수나 별을 띄우지 않고 다음 문제로 넘어갑니다.</p>
 
         <h3>결제나 광고가 있나요?</h3>
-        <p>없습니다. 인앱 결제도, 광고도, 구독도 없습니다. 채팅이나 공유처럼 다른 사람과
-          연결되는 기능도 없습니다.</p>
+        <p>없습니다. 인앱 결제도, 광고도, 구독도 없습니다. 채팅처럼 다른 사람과 연결되는
+          기능도 없습니다. 미션 보드를 그림으로 내보내는 것과 방침 보기만 앱 밖으로 나가는
+          길이고, 둘 다 어른 확인 뒤에 있습니다.</p>
 
         <h3>아이 정보를 모으나요?</h3>
-        <p>모으지 않습니다. 계정도 없고 기기 밖으로 나가는 정보도 없습니다.
-          자세한 내용은 <a href="privacy.html">개인정보처리방침</a>에 있습니다.</p>
+        <p>서버로 보내지 않습니다. 계정이 없고 기기 밖으로 나가는 정보도 없습니다.
+          첫 설정에서 받는 아이 이름(별명도 괜찮고 비워도 됩니다)과 진행 기록은 이 기기 안에만
+          남습니다. 자세한 내용은 <a href="privacy.html">개인정보처리방침</a>에 있습니다.</p>
 
         <h3>앱 버전은 어디서 보나요?</h3>
         <p>설정 화면 아래쪽 <em>버전</em>에 <code>1.0 (1)</code>처럼 적혀 있습니다.
@@ -370,10 +470,24 @@
           <li><strong>ABC</strong>, 20 levels — tracing and matching upper- and lower-case, phonics
             (first sounds), words and pictures</li>
           <li><strong>Flags</strong>, 10 levels — finding flags, from nearby countries to far-away ones</li>
+          <li><strong>Clock</strong>, 15 levels — from o'clock to seconds, round and digital alternating</li>
+          <li><strong>Times tables</strong>, 21 levels — from chanting along to mixed practice</li>
+          <li><strong>Calendar</strong>, 19 levels — from weekday and month names to reading a calendar</li>
+          <li><strong>Shapes</strong>, 15 levels — from shape names to counting sides</li>
+          <li><strong>Colours</strong>, 15 levels — from colour names to mixed colours</li>
+          <li><strong>Maze</strong>, 15 levels — trace a way out with a finger</li>
+          <li><strong>Tangram</strong>, 47 puzzles — fit seven pieces into a shape</li>
+          <li><strong>Drawing</strong> — crayons and paint, saved to Photos</li>
         </ul>
+        <p>On top of that comes <strong>Today's Challenge</strong>: fifteen questions a day from the
+          games a grown-up picked, with one sticker added to the Mission Board for each day finished.
+          Fill the chosen length (15, 30, 60 or 90 days) and the promised reward is due.</p>
 
         <h3>Which devices does it work on?</h3>
-        <p>iPhone and iPad running iOS 17 or later. On iPad it works in both portrait and landscape.</p>
+        <p>iPhone and iPad running iOS 17 or later. On iPad it works in both portrait and landscape.
+          iPhone stays portrait except in the <strong>Drawing game, which does rotate</strong> —
+          a wider sheet gives more room to draw. Rotating never erases a drawing; it is re-laid out
+          to fit the new screen.</p>
 
         <h3>Do I need an internet connection?</h3>
         <p>No. Every game works fully offline, so it is fine on a plane or in the car.</p>
@@ -381,15 +495,17 @@
         <h3>Can a child who cannot read use it?</h3>
         <p>Yes. Questions are read aloud and answers are shown with pictures and colour, so a child
           can play alone. A wrong answer only gives a gentle shake — never a red cross — so nobody
-          feels told off.</p>
+          feels told off. A right answer simply moves on: no score, no stars.</p>
 
         <h3>Are there purchases or ads?</h3>
-        <p>None. There are no in-app purchases, no ads and no subscriptions, and no chat, sharing or
-          other social features.</p>
+        <p>None. There are no in-app purchases, no ads, no subscriptions and no chat. The only ways
+          out of the app are exporting the Mission Board as a picture and opening the privacy policy,
+          and both sit behind a parental gate.</p>
 
         <h3>Do you collect data about my child?</h3>
-        <p>No. There is no account and nothing leaves the device. The
-          <a href="privacy.html">privacy policy</a> has the details.</p>
+        <p>Nothing is sent to a server. There is no account and nothing leaves the device. The name
+          asked for during setup (a nickname is fine, and it can be left blank) and all progress stay
+          on this device. The <a href="privacy.html">privacy policy</a> has the details.</p>
 
         <h3>Where do I find the app version?</h3>
         <p>Near the bottom of the settings screen, next to <em>Version</em>, shown like
@@ -399,10 +515,10 @@
   </main>
 
   <footer>
-    <p data-lang="ko">최종 수정일: 2026년 10월 13일</p>
-    <p data-lang="en">Last updated: 13 October 2026</p>
+    <p data-lang="ko">최종 수정일: 2026년 10월 19일</p>
+    <p data-lang="en">Last updated: 19 October 2026</p>
     <p>© Copyright Wooni</p>
-    <p><a href="privacy.html" data-lang="ko">개인정보처리방침</a><a href="privacy.html" data-lang="en">Privacy Policy</a></p>
+    <p><a href="index.html" data-lang="ko">앱 소개</a><a href="index.html" data-lang="en">About the app</a><span data-lang="ko"> · </span><span data-lang="en"> · </span><a href="privacy.html" data-lang="ko">개인정보처리방침</a><a href="privacy.html" data-lang="en">Privacy Policy</a></p>
   </footer>
 
 </div>
