@@ -234,7 +234,7 @@
       <div>
         <h2>진행 기록은 기기에만 있어요</h2>
         <p>열린 단계, 소리 스위치, 아이 이름, 오늘의 도전 계획(고른 놀이·기간·약속한 보상)만
-          이 기기 안에 저장돼요. 앱을 지우면 함께 사라지고, <em>설정 → 놀이터 기록 지우기</em>로
+          이 기기 안에 저장돼요. 앱을 지우면 함께 사라지고, <em>설정</em>에서
           언제든 직접 지울 수 있습니다.</p>
       </div>
     </div>
@@ -244,7 +244,7 @@
         <h2>Progress stays on the device</h2>
         <p>Only the unlocked levels, the sound switches, the child's name and the Today's Challenge
           plan (chosen games, length, promised reward) are stored on this device. Deleting the app
-          removes them, and <em>Settings → Erase playground progress</em> clears them any time.</p>
+          removes them, and <em>Settings</em> clears them any time.</p>
       </div>
     </div>
 
@@ -319,6 +319,9 @@
           그리기 놀이의 서명에만 쓰이며 <strong>기기 밖으로 나가지 않습니다</strong>.
           언제든 설정에서 고치거나 비울 수 있습니다. 애플의 앱 개인정보 표시에서는 이것을
           "수집"으로 보지 않습니다 — 기기를 떠나지 않기 때문입니다.</p>
+        <p>다만 <strong>이름이 적힌 그림을 사진으로 저장하거나 미션 보드를 내보내면</strong> 그
+          그림 안에 이름이 함께 들어갑니다. 그 그림을 어디로 보낼지는 그때 어른이 iOS의 공유
+          화면에서 고르는 일이고, 앱이 스스로 어디로도 보내지 않습니다.</p>
         <p>아이가 그 밖에 입력하는 것은 문제의 답과 따라쓰기 획뿐이고, 그마저도 채점하는 순간에만
           쓰이고 저장되지 않습니다.</p>
 
@@ -329,7 +332,12 @@
           <li>마지막 도전에서 틀린 문제가 있던 단계 번호 — 다음 도전에 그 단계를 한 번 더 내고
             나면 지워집니다</li>
           <li>효과음·문제 읽어주기·진동 스위치와 읽어주는 빠르기</li>
-          <li>문제에 쓰는 말(한국어·영어·섞어서)과 부모가 켜 둔 연산·범위 같은 놀이별 설정</li>
+          <li>문제에 쓰는 말(한국어·영어·섞어서)과 부모가 켜 둔 연산·구구단 범위 같은 놀이별 설정,
+            놀이터를 언제 열지</li>
+          <li><strong>달력 놀이의 ‘특별한 날’</strong> — 보호자가 직접 적어 넣은 이름과 날짜
+            (예: “아빠 생일 6월 3일”). 그 날짜가 달력 놀이의 문제로 나옵니다. 넣지 않으면
+            저장되는 것도 없고, <em>설정 → 놀이 설정</em>의 달력 놀이 구획에서 하나씩 지울 수 있습니다.
+            이 이름도 기기 밖으로 나가지 않습니다</li>
           <li>첫 설정에서 받은 아이 이름(또는 별명)</li>
           <li>매일 알림을 켰는지와 보낼 시각</li>
           <li>오늘의 도전 계획: 고른 놀이, 기간(15·30·60·90일), 끝낸 날수,
@@ -337,7 +345,10 @@
         </ul>
         <p>이 값은 iOS의 <code>UserDefaults</code>를 통해 기기 내부 저장 공간에만 남고 외부로 전송되지
           않으며, 앱을 삭제하면 함께 지워집니다. 개발자는 이 정보에 접근할 수 없습니다.
-          <em>설정 → 놀이터 기록 지우기</em>로 보호자가 직접 모두 지울 수 있습니다.</p>
+          보호자가 직접 지우는 길은 둘로 나뉩니다 —
+          <em>설정 → 놀이터 기록 지우기</em>(깬 단계·열린 단계·틀린 단계)와
+          <em>설정 → 오늘의 도전 → 도전 진행 지우기</em>(스티커·끝낸 날수)입니다.
+          이름·고른 놀이·보상·소리 설정까지 한 번에 지우려면 앱을 삭제하세요.</p>
 
         <h3>4. 소리와 읽어주기</h3>
         <p>아직 글을 못 읽는 아이도 혼자 할 수 있게, 문제를 소리로 읽어 주는 기능이 있습니다.
@@ -411,6 +422,9 @@
           signature on drawings, and it <strong>never leaves the device</strong>. It can be changed or
           cleared in Settings at any time. Apple's App Privacy labels do not treat this as
           “collection”, because it never leaves the device.</p>
+        <p>That said, <strong>saving a signed drawing to Photos or exporting the Mission Board</strong>
+          puts the name inside that picture. Where the picture then goes is the grown-up's choice in
+          the iOS share sheet at that moment; the App never sends it anywhere by itself.</p>
         <p>Otherwise the only things a child enters are answers and tracing strokes, and those are
           used to check the answer and then discarded.</p>
 
@@ -421,8 +435,14 @@
           <li>The level numbers a question was missed in during the last challenge — cleared once
             that level has come round one more time</li>
           <li>The sound-effects, read-aloud and haptics switches, and the reading speed</li>
-          <li>The language used in questions (Korean, English or mixed) and per-game settings such as
-            the arithmetic operations a grown-up enabled</li>
+          <li>The language used in questions (Korean, English or mixed), per-game settings such as
+            the arithmetic operations a grown-up enabled or how far the times tables go, and when the
+            Playground unlocks</li>
+          <li><strong>The calendar game's “special days”</strong> — a title and a date typed in by a
+            grown-up (for example “Dad's birthday, 3 June”), which then appear as calendar questions.
+            Nothing is stored if none are added, and each can be deleted in
+            the Calendar section of <em>Settings → Game settings</em>. These titles never leave the device
+            either</li>
           <li>The child's name (or nickname) from first-time setup</li>
           <li>Whether the daily reminder is on, and the time it is set to</li>
           <li>The Today's Challenge plan: the chosen games, the length (15, 30, 60 or 90 days), how
@@ -431,7 +451,11 @@
         </ul>
         <p>These values are kept in the device's local storage via iOS <code>UserDefaults</code>, are
           never transmitted anywhere, and are deleted when the App is deleted. The Developer has no
-          access to them. A grown-up can erase everything with <em>Settings → Erase playground progress</em>.</p>
+          access to them. A grown-up erases them in two places — <em>Settings → Erase playground progress</em>
+          (levels cleared, unlocked and missed) and
+          <em>Settings → Today's Challenge → Erase challenge progress</em> (stickers and days
+          finished). To clear the name, chosen games, reward and sound settings as well, delete
+          the App.</p>
 
         <h3>4. Sound and read-aloud</h3>
         <p>So that a child who cannot read yet can play alone, the App can read questions out loud.
