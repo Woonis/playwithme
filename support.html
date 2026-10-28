@@ -170,36 +170,12 @@
 <div class="wrap">
 
   <header>
-    <!-- 앱 아이콘과 같은 그림: 파랑→보라 네모 안 하얀 타일 2×2 (+ · 가 · A · 시계) -->
-    <svg class="mark" viewBox="0 0 100 100" role="img" aria-label="나랑 놀자! / Daily Playground">
-      <defs>
-        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#668CFC"/>
-          <stop offset="1" stop-color="#A170F2"/>
-        </linearGradient>
-      </defs>
-      <rect width="100" height="100" rx="24" fill="url(#g)"/>
-      <g fill="#fff" fill-opacity="0.97">
-        <rect x="12.9" y="12.9" width="34.2" height="34.2" rx="9.4"/>
-        <rect x="52.9" y="12.9" width="34.2" height="34.2" rx="9.4"/>
-        <rect x="12.9" y="52.9" width="34.2" height="34.2" rx="9.4"/>
-        <rect x="52.9" y="52.9" width="34.2" height="34.2" rx="9.4"/>
-      </g>
-      <!-- 글자는 아이콘 스크립트(Tools/make_icon.swift)의 타일 순서·색을 그대로 따릅니다 -->
-      <g font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', system-ui, sans-serif"
-         font-weight="800" text-anchor="middle" dominant-baseline="central">
-        <text x="30" y="31" font-size="26" fill="#4F8CF7">+</text>
-        <text x="70" y="31" font-size="19" fill="#F0669E">가</text>
-        <text x="30" y="71" font-size="23" fill="#9470F0">A</text>
-        <!-- 넷째 타일은 시계입니다. 아이콘 스크립트의 drawClock 과 같은 비율:
-             반지름 = 타일*0.34 · 선 굵기 = 타일*0.085 · 분침 위로 r*0.66 · 시침 오른쪽 r*0.46 -->
-        <g stroke="#3DB8D9" stroke-width="2.9" stroke-linecap="round" fill="none">
-          <circle cx="70" cy="71" r="11.6"/>
-          <path d="M70 71 L70 63.3"/>
-          <path d="M70 71 L75.3 71" stroke-width="3.2"/>
-        </g>
-      </g>
-    </svg>
+    <!-- **앱 아이콘 그 파일입니다.** `playwithme/Tools/make_icon.swift` 가 앱 아이콘과
+         같은 코드로 뽑습니다(`swift Tools/make_icon.swift`) — 전에는 같은 그림을 SVG 로
+         손으로 그려 두었다가 타일 사이·여백·글자 크기가 어긋났고, 글자와 시계가 1칸
+         아래로 밀려 있었습니다. 고칠 때는 **스크립트를 다시 돌립니다.** -->
+    <img class="mark" src="icon-256.png" width="256" height="256"
+      alt="나랑 놀자! / Daily Playground">
 
     <h1>
       <span data-lang="ko">도움이 필요하세요?</span>
@@ -280,8 +256,10 @@
       <span class="emoji" aria-hidden="true">🔊</span>
       <div>
         <h2>목소리가 기계 같아요 / 너무 빨라요</h2>
-        <p>iOS 기본 목소리라서 그렇습니다. <em>설정 앱 &gt; 손쉬운 사용 &gt; 콘텐츠 말하기 &gt; 음성</em>에서
-          목소리를 한 번 내려받으면 훨씬 자연스러워져요. 앱의 <em>설정 → 소리와 읽어주기 →
+        <p>기기에 들어 있는 기본 목소리라서 그렇습니다. 목소리를 한 번 내려받으면 훨씬
+          자연스러워져요 — <strong>iPhone·iPad</strong>는 <em>설정 앱 &gt; 손쉬운 사용 &gt;
+          콘텐츠 말하기 &gt; 음성</em>, <strong>Android</strong>는 앱의 <em>설정 → 소리와
+          읽어주기</em>에 내려받는 단추가 나옵니다(기기에 그 언어 음성이 없을 때). 앱의 <em>설정 → 소리와 읽어주기 →
           목소리 들어보기</em>로 바로 확인할 수 있습니다.</p>
         <p>같은 쪽의 <em>읽어주는 빠르기</em>를 <strong>느리게</strong>로 두면 한 글자씩 또박또박
           읽어 줍니다. 처음 듣는 말이 많은 아이에게 도움이 됩니다.</p>
@@ -291,8 +269,10 @@
       <span class="emoji" aria-hidden="true">🔊</span>
       <div>
         <h2>The voice sounds robotic / too fast</h2>
-        <p>That's the basic iOS voice. Download a better one in
-          <em>Settings &gt; Accessibility &gt; Spoken Content &gt; Voices</em> and read-aloud improves a lot.
+        <p>That's the device's basic voice. Downloading a better one improves read-aloud a lot —
+          on <strong>iPhone/iPad</strong> see <em>Settings &gt; Accessibility &gt; Spoken Content &gt;
+          Voices</em>; on <strong>Android</strong> the app's <em>Settings → Sound &amp; reading</em>
+          offers a download button when the device has no voice for that language.
           Use <em>Settings → Sound &amp; reading → Hear the voice</em> in the app to check.</p>
         <p>On the same page, setting <em>Reading speed</em> to <strong>Slow</strong> makes the voice
           say each word clearly — helpful when most of the words are new to the child.</p>
@@ -357,8 +337,8 @@
         <p><em>설정 → 오늘의 도전 → 매일 알림</em>을 켜고 시간을 정해 주세요(기본 저녁 7시).
           <strong>이미 끝낸 날에는 보내지 않습니다.</strong> 기기 안에서 예약하는 알림이라
           서버를 거치지 않고, 끄면 예약한 것이 모두 지워집니다.</p>
-        <p>알림이 오지 않으면 <em>iOS 설정 앱 &gt; 알림</em>에서 이 앱의 알림이 꺼져 있는지
-          봐 주세요.</p>
+        <p>알림이 오지 않으면 <strong>기기 설정 &gt; 알림</strong>에서 이 앱의 알림이 꺼져
+          있는지 봐 주세요.</p>
       </div>
     </div>
     <div class="card" data-lang="en">
@@ -368,8 +348,8 @@
         <p>Turn on <em>Settings → Today's Challenge → Daily reminder</em> and pick a time (7pm by
           default). <strong>Nothing is sent on a day already finished.</strong> It is scheduled on
           the device, so no server is involved, and turning it off removes every scheduled one.</p>
-        <p>If no reminder arrives, check whether notifications for this app are off in
-          <em>iOS Settings &gt; Notifications</em>.</p>
+        <p>If no reminder arrives, check whether notifications for this app are off in your
+          <strong>device settings &gt; Notifications</strong>.</p>
       </div>
     </div>
 
@@ -405,8 +385,8 @@
       Email us
       <span>baby.planner.wooni@gmail.com</span>
     </a>
-    <p class="reply" data-lang="ko">보통 2~3일 안에 답장합니다. 기기(아이폰·아이패드)와 iOS 버전을 함께 적어 주시면 빠릅니다.</p>
-    <p class="reply" data-lang="en">We usually reply within 2–3 days. Telling us your device and iOS version helps.</p>
+    <p class="reply" data-lang="ko">보통 2~3일 안에 답장합니다. 기기와 운영체제 버전(예: iPhone·iOS 17 / Galaxy·Android 14)을 함께 적어 주시면 빠릅니다.</p>
+    <p class="reply" data-lang="en">We usually reply within 2–3 days. Telling us your device and OS version (e.g. iPhone on iOS 17, or a Galaxy on Android 14) helps.</p>
 
     <details data-lang="ko">
       <summary>더 자세히</summary>
@@ -431,9 +411,10 @@
           다 채우면 약속한 보상을 줍니다.</p>
 
         <h3>어떤 기기에서 되나요?</h3>
-        <p>iOS 17 이상의 iPhone과 iPad에서 됩니다. 아이패드는 가로·세로 모두 쓸 수 있습니다.
-          아이폰은 세로로 고정하되 <strong>그리기 놀이만 가로로 돌아갑니다</strong> — 도화지가
-          넓어야 그릴 자리가 생기기 때문입니다. 돌리면 그린 그림은 지워지지 않고 새 화면에
+        <p><strong>iOS 17 이상의 iPhone·iPad</strong>와 <strong>Android 8.0 이상의 폰·태블릿</strong>
+          에서 됩니다. 태블릿은 가로·세로 모두 쓸 수 있습니다. 폰은 세로로 고정하되
+          <strong>그리기 놀이만 가로로 돌아갑니다</strong> — 도화지가 넓어야 그릴 자리가
+          생기기 때문입니다. 돌리면 그린 그림은 지워지지 않고 새 화면에
           맞춰 다시 놓입니다.</p>
 
         <h3>인터넷이 필요한가요?</h3>
@@ -484,9 +465,10 @@
           Fill the chosen length (15, 30, 60 or 90 days) and the promised reward is due.</p>
 
         <h3>Which devices does it work on?</h3>
-        <p>iPhone and iPad running iOS 17 or later. On iPad it works in both portrait and landscape.
-          iPhone stays portrait except in the <strong>Drawing game, which does rotate</strong> —
-          a wider sheet gives more room to draw. Rotating never erases a drawing; it is re-laid out
+        <p><strong>iPhone and iPad on iOS 17 or later</strong>, and <strong>Android phones and
+          tablets on Android 8.0 or later</strong>. On a tablet it works in both portrait and
+          landscape. Phones stay portrait except in the <strong>Drawing game, which does
+          rotate</strong> — a wider sheet gives more room to draw. Rotating never erases a drawing; it is re-laid out
           to fit the new screen.</p>
 
         <h3>Do I need an internet connection?</h3>

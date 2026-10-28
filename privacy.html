@@ -153,36 +153,12 @@
 <div class="wrap">
 
   <header>
-    <!-- 앱 아이콘과 같은 그림: 파랑→보라 네모 안 하얀 타일 2×2 (+ · 가 · A · 시계) -->
-    <svg class="mark" viewBox="0 0 100 100" role="img" aria-label="나랑 놀자! / Daily Playground">
-      <defs>
-        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#668CFC"/>
-          <stop offset="1" stop-color="#A170F2"/>
-        </linearGradient>
-      </defs>
-      <rect width="100" height="100" rx="24" fill="url(#g)"/>
-      <g fill="#fff" fill-opacity="0.97">
-        <rect x="12.9" y="12.9" width="34.2" height="34.2" rx="9.4"/>
-        <rect x="52.9" y="12.9" width="34.2" height="34.2" rx="9.4"/>
-        <rect x="12.9" y="52.9" width="34.2" height="34.2" rx="9.4"/>
-        <rect x="52.9" y="52.9" width="34.2" height="34.2" rx="9.4"/>
-      </g>
-      <!-- 글자는 아이콘 스크립트(Tools/make_icon.swift)의 타일 순서·색을 그대로 따릅니다 -->
-      <g font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', system-ui, sans-serif"
-         font-weight="800" text-anchor="middle" dominant-baseline="central">
-        <text x="30" y="31" font-size="26" fill="#4F8CF7">+</text>
-        <text x="70" y="31" font-size="19" fill="#F0669E">가</text>
-        <text x="30" y="71" font-size="23" fill="#9470F0">A</text>
-        <!-- 넷째 타일은 시계입니다. 아이콘 스크립트의 drawClock 과 같은 비율:
-             반지름 = 타일*0.34 · 선 굵기 = 타일*0.085 · 분침 위로 r*0.66 · 시침 오른쪽 r*0.46 -->
-        <g stroke="#3DB8D9" stroke-width="2.9" stroke-linecap="round" fill="none">
-          <circle cx="70" cy="71" r="11.6"/>
-          <path d="M70 71 L70 63.3"/>
-          <path d="M70 71 L75.3 71" stroke-width="3.2"/>
-        </g>
-      </g>
-    </svg>
+    <!-- **앱 아이콘 그 파일입니다.** `playwithme/Tools/make_icon.swift` 가 앱 아이콘과
+         같은 코드로 뽑습니다(`swift Tools/make_icon.swift`) — 전에는 같은 그림을 SVG 로
+         손으로 그려 두었다가 타일 사이·여백·글자 크기가 어긋났고, 글자와 시계가 1칸
+         아래로 밀려 있었습니다. 고칠 때는 **스크립트를 다시 돌립니다.** -->
+    <img class="mark" src="icon-256.png" width="256" height="256"
+      alt="나랑 놀자! / Daily Playground">
 
     <h1>
       <span data-lang="ko">개인정보처리방침</span>
@@ -252,14 +228,14 @@
     <div class="card" data-lang="ko">
       <span class="emoji" aria-hidden="true">🔊</span>
       <div>
-        <h2>읽어주기는 아이폰 목소리예요</h2>
-        <p>문제를 읽어 줄 때는 아이폰에 들어 있는 목소리를 씁니다. 마이크를 쓰지 않고, 아이 목소리를 듣거나 녹음하지도 않아요.</p>
+        <h2>읽어주기는 기기 목소리예요</h2>
+        <p>문제를 읽어 줄 때는 기기에 들어 있는 목소리를 씁니다. 마이크를 쓰지 않고, 아이 목소리를 듣거나 녹음하지도 않아요.</p>
       </div>
     </div>
     <div class="card" data-lang="en">
       <span class="emoji" aria-hidden="true">🔊</span>
       <div>
-        <h2>Read-aloud uses your iPhone's voice</h2>
+        <h2>Read-aloud uses the device's own voice</h2>
         <p>Questions are spoken with a voice already installed on the device. The app never uses the microphone and never listens to or records a child.</p>
       </div>
     </div>
@@ -305,8 +281,10 @@
       <summary>자세히 읽기 (보호자·심사용)</summary>
       <div>
         <h3>1. 적용 범위</h3>
-        <p>이 방침은 Wooni(이하 “개발자”)가 만든 iPhone·iPad 앱
-          <strong>나랑 놀자!</strong>(번들 ID <code>com.wooni.playwithme</code>, 이하 “앱”)에 적용됩니다.
+        <p>이 방침은 Wooni(이하 “개발자”)가 만든 <strong>나랑 놀자!</strong>
+          (<code>com.wooni.playwithme</code>, 이하 “앱”)에 적용됩니다 —
+          <strong>iPhone·iPad 판과 Android 판 모두</strong>입니다. 두 판은 같은 놀이를 담고
+          있고 <strong>기기에 저장하는 것도 같습니다.</strong>
           앱에는 열두 가지 놀이(숫자·한글·ABC·국기·시계·구구단·달력·도형·색·미로·칠교·그리기)와
           하루 15문제를 내는 <strong>오늘의 도전</strong>이 들어 있습니다.</p>
 
@@ -317,11 +295,11 @@
         <p>첫 설정에서 <strong>아이를 부를 이름</strong>을 한 번 받습니다. 별명이나 애칭도 괜찮고,
           비워 두어도 앱을 모두 쓸 수 있습니다. 이 이름은 화면 제목("지우의 놀이터")과 미션 보드,
           그리기 놀이의 서명에만 쓰이며 <strong>기기 밖으로 나가지 않습니다</strong>.
-          언제든 설정에서 고치거나 비울 수 있습니다. 애플의 앱 개인정보 표시에서는 이것을
-          "수집"으로 보지 않습니다 — 기기를 떠나지 않기 때문입니다.</p>
+          언제든 설정에서 고치거나 비울 수 있습니다. 애플의 앱 개인정보 표시도, 구글 플레이의
+          데이터 보안도 이것을 "수집"으로 보지 않습니다 — 기기를 떠나지 않기 때문입니다.</p>
         <p>다만 <strong>이름이 적힌 그림을 사진으로 저장하거나 미션 보드를 내보내면</strong> 그
-          그림 안에 이름이 함께 들어갑니다. 그 그림을 어디로 보낼지는 그때 어른이 iOS의 공유
-          화면에서 고르는 일이고, 앱이 스스로 어디로도 보내지 않습니다.</p>
+          그림 안에 이름이 함께 들어갑니다. 그 그림을 어디로 보낼지는 그때 어른이 <strong>기기의
+          공유 화면</strong>에서 고르는 일이고, 앱이 스스로 어디로도 보내지 않습니다.</p>
         <p>아이가 그 밖에 입력하는 것은 문제의 답과 따라쓰기 획뿐이고, 그마저도 채점하는 순간에만
           쓰이고 저장되지 않습니다.</p>
 
@@ -343,8 +321,12 @@
           <li>오늘의 도전 계획: 고른 놀이, 기간(15·30·60·90일), 끝낸 날수,
             약속한 보상의 이름과 — 넣었다면 — 부모가 고른 보상 사진 한 장</li>
         </ul>
-        <p>이 값은 iOS의 <code>UserDefaults</code>를 통해 기기 내부 저장 공간에만 남고 외부로 전송되지
-          않으며, 앱을 삭제하면 함께 지워집니다. 개발자는 이 정보에 접근할 수 없습니다.
+        <p>이 값은 <strong>기기 내부 저장 공간</strong>에만 남고 외부로 전송되지 않으며
+          (iPhone·iPad 판은 <code>UserDefaults</code>, Android 판은 <code>DataStore</code>),
+          앱을 삭제하면 함께 지워집니다. 개발자는 이 정보에 접근할 수 없습니다.
+          <strong>Android 판은 자동 백업을 꺼 두었습니다</strong> — 켜져 있으면 안드로이드가
+          이 값을 구글 드라이브로 올리므로, 기기를 떠나는 길을 모두 닫아 두었습니다
+          (기기 간 이전도 함께 막습니다).
           보호자가 직접 지우는 길은 둘로 나뉩니다 —
           <em>설정 → 놀이터 기록 지우기</em>(깬 단계·열린 단계·틀린 단계)와
           <em>설정 → 오늘의 도전 → 도전 진행 지우기</em>(스티커·끝낸 날수)입니다.
@@ -352,10 +334,10 @@
 
         <h3>4. 소리와 읽어주기</h3>
         <p>아직 글을 못 읽는 아이도 혼자 할 수 있게, 문제를 소리로 읽어 주는 기능이 있습니다.
-          읽어주기는 iOS에 들어 있는 음성 합성 기능을 기기 안에서 실행하는 것이며, 읽어 줄 문장을
-          외부로 보내지 않습니다. 앱은 마이크 권한을 요청하지 않고, 소리를 듣거나 녹음하는 기능이
-          없습니다. 더 자연스러운 목소리를 쓰고 싶은 보호자를 위해 설정 화면에서 iOS 설정 앱의
-          목소리 내려받기 경로를 글로 안내할 뿐, 앱이 무엇을 내려받지는 않습니다.</p>
+          읽어주기는 <strong>기기에 들어 있는 음성 합성 기능</strong>을 기기 안에서 실행하는
+          것이며, 읽어 줄 문장을 외부로 보내지 않습니다. 앱은 마이크 권한을 요청하지 않고, 소리를 듣거나 녹음하는 기능이
+          없습니다. 더 자연스러운 목소리를 쓰고 싶은 보호자를 위해 설정 화면에서 <strong>기기
+          설정의 목소리 내려받기 경로</strong>를 글로 안내할 뿐, 앱이 무엇을 내려받지는 않습니다.</p>
 
         <h3>5. 권한과 사진</h3>
         <p>앱은 위치·마이크·연락처 권한을 요청하지 않습니다. <strong>알림</strong>은 보호자가
@@ -363,15 +345,18 @@
           알림은 기기 안에서 예약하는 로컬 알림이고 서버를 거치지 않습니다.
           사진은 두 자리에서만 닿습니다.</p>
         <ul>
-          <li><strong>그린 그림 저장</strong>(그리기 놀이) — 아이가 저장을 누를 때만 사진 앱에
-            <em>추가</em>합니다(<code>NSPhotoLibraryAddUsageDescription</code>). 앱은 사진 앱의
-            사진을 읽지 않습니다.</li>
-          <li><strong>보상 그림 넣기</strong>(설정, 어른 확인 뒤) — iOS의 사진 고르기 화면을 띄워
-            부모가 고른 한 장만 받습니다. 앱이 사진 앱 전체에 접근하지 않으므로 권한을 따로
-            묻지 않습니다. 받은 그림은 이 기기 안에만 남습니다.</li>
+          <li><strong>그린 그림 저장</strong>(그리기 놀이) — 아이가 저장을 누를 때만 사진에
+            <em>추가</em>합니다. iPhone·iPad 판은 "사진 추가" 권한을 쓰고
+            (<code>NSPhotoLibraryAddUsageDescription</code>), Android 판은 안드로이드 10 이상에서
+            권한 없이 추가합니다(그보다 낮은 기기에서만 저장 권한을 씁니다).
+            <strong>어느 판도 사진 앱의 사진을 읽지 않습니다.</strong></li>
+          <li><strong>보상 그림 넣기</strong>(설정, 어른 확인 뒤) — <strong>기기의 사진 고르기
+            화면</strong>을 띄워 부모가 고른 한 장만 받습니다. 앱이 사진 앱 전체에 접근하지
+            않으므로 권한을 따로 묻지 않습니다. 받은 그림은 앱 안으로 복사해 두고 이 기기
+            밖으로 나가지 않습니다.</li>
         </ul>
-        <p>미션 보드를 그림으로 내보내는 기능은 iOS의 공유 화면을 띄울 뿐이고, 어디로 보낼지는
-          어른이 그 화면에서 고릅니다. 이 기능도 어른 확인 뒤에 있습니다.</p>
+        <p>미션 보드를 그림으로 내보내는 기능은 <strong>기기의 공유 화면</strong>을 띄울 뿐이고,
+          어디로 보낼지는 어른이 그 화면에서 고릅니다. 이 기능도 어른 확인 뒤에 있습니다.</p>
 
         <h3>6. 네트워크 통신 · 제3자 제공</h3>
         <p>앱에는 네트워크 통신 기능이 없습니다. 매일 알림도 기기 안에서 예약하는 로컬 알림이라
@@ -406,9 +391,10 @@
       <summary>Full policy (for parents &amp; App Review)</summary>
       <div>
         <h3>1. Scope</h3>
-        <p>This policy applies to <strong>Daily Playground</strong> (bundle ID
-          <code>com.wooni.playwithme</code>, the “App”), an iPhone and iPad app made by Wooni
-          (the “Developer”). The App contains twelve games (numbers, Hangul, ABC, flags, clock,
+        <p>This policy applies to <strong>Daily Playground</strong>
+          (<code>com.wooni.playwithme</code>, the “App”) made by Wooni (the “Developer”) —
+          <strong>both the iPhone/iPad version and the Android version</strong>. The two versions
+          contain the same games and <strong>store the same things on the device</strong>. The App contains twelve games (numbers, Hangul, ABC, flags, clock,
           times tables, calendar, shapes, colours, maze, tangram and drawing) and
           <strong>Today's Challenge</strong>, which sets fifteen questions a day.</p>
 
@@ -420,11 +406,11 @@
           A nickname is fine, and it can be left blank — every part of the App still works. The name
           is used only in screen titles (“Jiwoo's Playground”), on the Mission Board and as the
           signature on drawings, and it <strong>never leaves the device</strong>. It can be changed or
-          cleared in Settings at any time. Apple's App Privacy labels do not treat this as
-          “collection”, because it never leaves the device.</p>
+          cleared in Settings at any time. Neither Apple's App Privacy labels nor Google Play's Data
+          safety section treat this as “collection”, because it never leaves the device.</p>
         <p>That said, <strong>saving a signed drawing to Photos or exporting the Mission Board</strong>
           puts the name inside that picture. Where the picture then goes is the grown-up's choice in
-          the iOS share sheet at that moment; the App never sends it anywhere by itself.</p>
+          the device's own share sheet at that moment; the App never sends it anywhere by itself.</p>
         <p>Otherwise the only things a child enters are answers and tracing strokes, and those are
           used to check the answer and then discarded.</p>
 
@@ -449,9 +435,12 @@
             many days are finished, the promised reward's name and — if one was added — a single
             reward picture a grown-up chose</li>
         </ul>
-        <p>These values are kept in the device's local storage via iOS <code>UserDefaults</code>, are
+        <p>These values are kept in the device's <strong>local storage</strong> only
+          (<code>UserDefaults</code> on iPhone/iPad, <code>DataStore</code> on Android), are
           never transmitted anywhere, and are deleted when the App is deleted. The Developer has no
-          access to them. A grown-up erases them in two places — <em>Settings → Erase playground progress</em>
+          access to them. <strong>On Android, automatic backup is turned off</strong> — with it on,
+          Android would upload these values to Google Drive, so every route off the device is
+          closed (device-to-device transfer included). A grown-up erases them in two places — <em>Settings → Erase playground progress</em>
           (levels cleared, unlocked and missed) and
           <em>Settings → Today's Challenge → Erase challenge progress</em> (stickers and days
           finished). To clear the name, chosen games, reward and sound settings as well, delete
@@ -459,10 +448,11 @@
 
         <h3>4. Sound and read-aloud</h3>
         <p>So that a child who cannot read yet can play alone, the App can read questions out loud.
-          Read-aloud runs iOS's on-device speech synthesis; nothing that is spoken is sent anywhere.
+          Read-aloud runs the device's own on-device speech synthesis; nothing that is spoken is
+          sent anywhere.
           The App does not request microphone access and has no ability to listen to or record audio.
           For grown-ups who want a more natural voice, the settings screen simply explains where to
-          download one in the iOS Settings app — the App itself downloads nothing.</p>
+          download one in the device's own settings — the App itself downloads nothing.</p>
 
         <h3>5. Permissions and photos</h3>
         <p>The App never requests location, microphone or contacts access.
@@ -472,15 +462,17 @@
           Photos are touched in exactly two places.</p>
         <ul>
           <li><strong>Saving a drawing</strong> (Drawing game) — only when a child taps save, the
-            drawing is <em>added</em> to the photo library
-            (<code>NSPhotoLibraryAddUsageDescription</code>). The App never reads existing photos.</li>
-          <li><strong>Adding a reward picture</strong> (Settings, behind the parental gate) — iOS's
-            own photo picker is shown and the App receives only the single image a grown-up picked.
-            Because the App never reaches into the whole library, no permission prompt is needed.
-            The picture stays on this device.</li>
+            drawing is <em>added</em> to the photo library. On iPhone/iPad this uses the
+            “add to Photos” permission (<code>NSPhotoLibraryAddUsageDescription</code>); on Android
+            10 and above no permission is needed at all (older devices use storage permission).
+            <strong>Neither version ever reads existing photos.</strong></li>
+          <li><strong>Adding a reward picture</strong> (Settings, behind the parental gate) — the
+            device's own photo picker is shown and the App receives only the single image a grown-up
+            picked. Because the App never reaches into the whole library, no permission prompt is
+            needed. The picture is copied into the App and stays on this device.</li>
         </ul>
-        <p>Exporting the Mission Board as a picture simply opens the iOS share sheet; where it goes
-          is the grown-up's choice there. That feature also sits behind the parental gate.</p>
+        <p>Exporting the Mission Board as a picture simply opens the device's own share sheet;
+          where it goes is the grown-up's choice there. That feature also sits behind the parental gate.</p>
 
         <h3>6. Network activity and third parties</h3>
         <p>The App has no networking code. The daily reminder is a local notification scheduled on

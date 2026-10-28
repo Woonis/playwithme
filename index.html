@@ -225,36 +225,12 @@
 <div class="wrap">
 
   <header>
-    <!-- 앱 아이콘과 같은 그림: 파랑→보라 네모 안 하얀 타일 2×2 (+ · 가 · A · 시계) -->
-    <svg class="mark" viewBox="0 0 100 100" role="img" aria-label="나랑 놀자! / Daily Playground">
-      <defs>
-        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#668CFC"/>
-          <stop offset="1" stop-color="#A170F2"/>
-        </linearGradient>
-      </defs>
-      <rect width="100" height="100" rx="24" fill="url(#g)"/>
-      <g fill="#fff" fill-opacity="0.97">
-        <rect x="12.9" y="12.9" width="34.2" height="34.2" rx="9.4"/>
-        <rect x="52.9" y="12.9" width="34.2" height="34.2" rx="9.4"/>
-        <rect x="12.9" y="52.9" width="34.2" height="34.2" rx="9.4"/>
-        <rect x="52.9" y="52.9" width="34.2" height="34.2" rx="9.4"/>
-      </g>
-      <!-- 글자는 아이콘 스크립트(Tools/make_icon.swift)의 타일 순서·색을 그대로 따릅니다 -->
-      <g font-family="-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', system-ui, sans-serif"
-         font-weight="800" text-anchor="middle" dominant-baseline="central">
-        <text x="30" y="31" font-size="26" fill="#4F8CF7">+</text>
-        <text x="70" y="31" font-size="19" fill="#F0669E">가</text>
-        <text x="30" y="71" font-size="23" fill="#9470F0">A</text>
-      </g>
-      <!-- 넷째 타일은 시계입니다. 아이콘 스크립트의 drawClock 과 같은 비율:
-           반지름 = 타일*0.34 · 선 굵기 = 타일*0.085 · 분침 위로 r*0.66 · 시침 오른쪽 r*0.46 -->
-      <g stroke="#3DB8D9" stroke-width="2.9" stroke-linecap="round" fill="none">
-        <circle cx="70" cy="71" r="11.6"/>
-        <path d="M70 71 L70 63.3"/>
-        <path d="M70 71 L75.3 71" stroke-width="3.2"/>
-      </g>
-    </svg>
+    <!-- **앱 아이콘 그 파일입니다.** `playwithme/Tools/make_icon.swift` 가 앱 아이콘과
+         같은 코드로 뽑습니다(`swift Tools/make_icon.swift`) — 전에는 같은 그림을 SVG 로
+         손으로 그려 두었다가 타일 사이·여백·글자 크기가 어긋났고, 글자와 시계가 1칸
+         아래로 밀려 있었습니다. 고칠 때는 **스크립트를 다시 돌립니다.** -->
+    <img class="mark" src="icon-256.png" width="256" height="256"
+      alt="나랑 놀자! / Daily Playground">
 
     <h1>
       <span data-lang="ko">나랑 놀자!</span>
@@ -285,8 +261,8 @@
 
     <ul class="badges" data-lang="ko">
       <li>만 5세부터 · 6~8세 권장</li>
-      <li>iPhone · iPad</li>
-      <li>iOS 17 이상</li>
+      <li>iPhone · iPad · Android</li>
+      <li>iOS 17 이상 · Android 8.0 이상</li>
       <li>한국어 · 영어</li>
       <li>광고 없음</li>
       <li>인앱 결제 없음</li>
@@ -296,8 +272,8 @@
     </ul>
     <ul class="badges" data-lang="en">
       <li>Ages 5+ · best at 6–8</li>
-      <li>iPhone · iPad</li>
-      <li>iOS 17+</li>
+      <li>iPhone · iPad · Android</li>
+      <li>iOS 17+ · Android 8.0+</li>
       <li>Korean · English</li>
       <li>No ads</li>
       <li>No in-app purchases</li>
@@ -518,12 +494,14 @@
     <h2 class="sec" data-lang="ko">출시 준비 중이에요</h2>
     <h2 class="sec" data-lang="en">Coming soon</h2>
     <div class="card" data-lang="ko">
-      <p>App Store 심사를 준비하고 있습니다. 올라가면 이 페이지에 내려받기 단추가 생깁니다.
+      <p>App Store와 Google Play 심사를 준비하고 있습니다. 올라가면 이 페이지에 내려받기
+        단추가 생깁니다.
         먼저 써 보고 싶거나 바라는 놀이가 있다면 메일로 알려 주세요 — 한 사람이 만드는 앱이라
         의견이 그대로 들어갑니다.</p>
     </div>
     <div class="card" data-lang="en">
-      <p>We are preparing for App Store review; a download button will appear here once it is live.
+      <p>We are preparing for App Store and Google Play review; a download button will appear
+        here once it is live.
         If you would like to try it early, or there is a game you wish it had, just send an email —
         this is a one-person app, so suggestions go straight in.</p>
     </div>
