@@ -121,6 +121,31 @@
   }
   .sec-note { margin: -6px 0 14px; font-size: 14px; font-weight: 600; color: var(--brand-subtle); }
 
+  /* 화면 미리 보기 — 스크린샷을 언어별로 나눠 넣습니다.
+     `loading="lazy"` 가 중요합니다: 고르지 않은 언어의 그림은 `display:none` 이라
+     화면에 들어오지 않으므로 아예 받아 오지 않습니다(열두 장이 872KB 입니다). */
+  .shots {
+    display: grid; gap: 18px 12px;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 0 30px; padding: 0; list-style: none;
+  }
+  @media (min-width: 560px) { .shots { grid-template-columns: repeat(3, 1fr); } }
+  .shots li { text-align: center; }
+  .shots img {
+    display: block; width: 100%; height: auto;
+    border-radius: 14px;
+    border: 1.5px solid rgba(59,59,79,0.10);
+    background: #fff;
+  }
+  .shots b {
+    display: block; margin: 9px 0 2px;
+    font-size: 14.5px; color: var(--brand-ink);
+  }
+  .shots small {
+    display: block; font-size: 12.5px; line-height: 1.5;
+    color: var(--brand-subtle); font-weight: 600;
+  }
+
   /* 카드 */
   .card {
     background: #fff;
@@ -317,7 +342,7 @@
       <h3>🔥 하루 15문제, 끝나면 스티커 한 칸</h3>
       <p>부모가 넣어 둔 놀이에서 <strong>매일 세 놀이씩</strong> 골라 15문제를 냅니다.
         고른 묶음은 날마다 바뀌어서, 어제는 한글·국기·색이었다면 오늘은 숫자·시계·달력입니다.</p>
-      <p>하루를 끝내면 <strong>미션 보드</strong>에 스티커가 한 칸 붙고, 정한 기간(15·30·60·90일)을
+      <p>하루를 끝내면 <strong>별나무</strong>에 스티커가 한 칸 붙고, 정한 기간(15·28·55일)을
         다 채우면 부모가 약속한 보상이 나옵니다 — 보상 자리에 사진 한 장을 넣어 두면
         아이가 무엇을 향해 가는지 눈으로 봅니다.</p>
       <p>기간은 날짜가 아니라 <strong>끝낸 횟수</strong>로 셉니다. 하루 쉬어도 진도가 밀리지 않아요.
@@ -329,7 +354,7 @@
       <p>From the games a grown-up picked, the app chooses <strong>three each day</strong> and sets
         fifteen questions. The trio changes daily: Hangul, flags and colours yesterday; numbers,
         clock and calendar today.</p>
-      <p>Finishing a day adds one sticker to the <strong>Mission Board</strong>, and filling the
+      <p>Finishing a day adds one sticker to the <strong>Star Tree</strong>, and filling the
         chosen length (15, 30, 60 or 90 days) earns the reward a grown-up promised — add a photo of
         it and the child can see what they are working towards.</p>
       <p>The length counts <strong>days finished</strong>, not calendar days, so a day off never puts
@@ -357,6 +382,67 @@
       <p>The Playground can stay locked <strong>until the daily challenge is done</strong>, or be
         open from the start (“Free playground” in settings).</p>
     </div>
+
+
+    <!-- ── 화면 미리 보기 ───────────────────────────────── -->
+    <h2 class="sec" data-lang="ko">화면 미리 보기</h2>
+    <h2 class="sec" data-lang="en">A look inside</h2>
+    <p class="sec-note" data-lang="ko">아이폰에서 찍은 실제 화면입니다.</p>
+    <p class="sec-note" data-lang="en">Real screens, captured on an iPhone.</p>
+
+    <ul class="shots" data-lang="ko">
+      <li><img src="screens/ko-home.jpg" width="440" height="956" loading="lazy"
+            alt="첫 화면 — 오늘의 도전과 놀이터 타일 열두 칸">
+        <b>첫 화면</b><small>오늘의 도전 한 칸, 별나무 한 줄, 그 아래 놀이 열두 칸이
+          스크롤 없이 다 보입니다.</small></li>
+      <li><img src="screens/ko-board.jpg" width="440" height="956" loading="lazy"
+            alt="별나무 — 하루에 한 칸씩 스티커가 붙는 나무">
+        <b>별나무</b><small>하루를 끝내면 스티커 한 칸. 다 채우면 꼭대기 별이 완성되고
+          그 안에 약속한 보상이 들어 있습니다.</small></li>
+      <li><img src="screens/ko-hangul.jpg" width="440" height="956" loading="lazy"
+            alt="한글 놀이 — 그림을 보고 첫 글자를 고르는 문제">
+        <b>한글 놀이</b><small>자모부터 낱말까지 20단계. 문제는 소리로 읽어 주고,
+          틀리면 단추가 살짝 흔들립니다.</small></li>
+      <li><img src="screens/ko-clock.jpg" width="440" height="956" loading="lazy"
+            alt="시계 놀이 — 동그란 시계를 보고 시각을 고르는 문제">
+        <b>시계 놀이</b><small>한 단계 안에서 동그란 시계와 숫자 시계가 번갈아 나옵니다.
+          바늘은 색과 길이가 모두 달라요.</small></li>
+      <li><img src="screens/ko-tangram.jpg" width="440" height="956" loading="lazy"
+            alt="칠교 놀이 — 일곱 조각으로 도안을 맞추는 화면">
+        <b>칠교 놀이</b><small>일곱 조각으로 도안 47장을 맞춥니다. 문제도 정답도 없고,
+          맞으면 조각이 제자리에 붙습니다.</small></li>
+      <li><img src="screens/ko-paint.jpg" width="440" height="956" loading="lazy"
+            alt="그리기 놀이 — 크레용과 도장으로 그린 그림">
+        <b>그리기 놀이</b><small>크레용·물감·도장과 밑그림 70장. 단계도 점수도 없고,
+          그린 그림은 사진으로 저장할 수 있습니다.</small></li>
+    </ul>
+
+    <ul class="shots" data-lang="en">
+      <li><img src="screens/en-home.jpg" width="440" height="956" loading="lazy"
+            alt="First screen — today's challenge and twelve game tiles">
+        <b>First screen</b><small>Today's challenge, the star tree row, and all twelve games
+          below it — no scrolling needed.</small></li>
+      <li><img src="screens/en-board.jpg" width="440" height="956" loading="lazy"
+            alt="Star Tree — a tree that fills with one sticker a day">
+        <b>Star Tree</b><small>One sticker per finished day. Fill it and the star on top is
+          complete, holding the reward a parent promised.</small></li>
+      <li><img src="screens/en-hangul.jpg" width="440" height="956" loading="lazy"
+            alt="Hangul game — pick the first letter of the pictured word">
+        <b>Hangul</b><small>Twenty levels from single letters to whole words. Questions are
+          read aloud; a wrong tap just shakes the button.</small></li>
+      <li><img src="screens/en-clock.jpg" width="440" height="956" loading="lazy"
+            alt="Clock game — read the round clock and pick the time">
+        <b>Clock</b><small>Round and digital clocks alternate inside one level. The three
+          hands differ in length and weight, not only colour.</small></li>
+      <li><img src="screens/en-tangram.jpg" width="440" height="956" loading="lazy"
+            alt="Tangram — fitting seven pieces into a silhouette">
+        <b>Tangram</b><small>Forty-seven silhouettes built from seven pieces. No questions,
+          no scoring — a piece snaps home when it fits.</small></li>
+      <li><img src="screens/en-paint.jpg" width="440" height="956" loading="lazy"
+            alt="Drawing — strokes made with crayons and stamps">
+        <b>Drawing</b><small>Crayons, paint, stamps and 70 outlines to colour. No levels, no
+          score; a drawing can be saved to Photos.</small></li>
+    </ul>
 
     <!-- ── 열두 놀이 ───────────────────────────────── -->
     <h2 class="sec" data-lang="ko">열두 가지 놀이</h2>
@@ -496,7 +582,7 @@
       <p>계정도 서버도 분석 도구도 없습니다. 열린 단계·소리 스위치·아이 이름·도전 계획은
         <strong>이 기기 안에만</strong> 남고, 앱을 지우면 함께 사라집니다. 개발자는 그 값을 볼 수 없습니다.</p>
       <p>매일 알림도 기기 안에서 예약하는 로컬 알림이라 푸시 서버를 쓰지 않습니다.
-        앱 밖으로 나가는 길은 방침 보기와 미션 보드 내보내기 둘뿐이고, 둘 다 어른 확인 뒤에 있습니다.</p>
+        앱 밖으로 나가는 길은 방침 보기와 별나무 내보내기 둘뿐이고, 둘 다 어른 확인 뒤에 있습니다.</p>
       <p><a href="privacy.html">개인정보처리방침 전문 보기 →</a></p>
     </div>
     <div class="card" data-lang="en">
@@ -505,7 +591,7 @@
         and the challenge plan live <strong>on this device only</strong> and go away with the app.
         The developer cannot see any of it.</p>
       <p>The daily reminder is a local notification scheduled on the device, so no push server is
-        involved. The only two ways out of the app are this policy and exporting the Mission Board,
+        involved. The only two ways out of the app are this policy and exporting the Star Tree,
         and both sit behind the parental gate.</p>
       <p><a href="privacy.html">Read the full privacy policy →</a></p>
     </div>
