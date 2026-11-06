@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-  나랑 놀자! / Daily Playground — 앱 소개 (Landing page)
+  포포키 / Popoki — 앱 소개 (Landing page)
   출시 전 미리 보여 주는 소개 페이지입니다. 인스타그램 프로필 링크가 여기를 가리킵니다.
   privacy.html · support.html 과 같은 껍데기(색 변수 · 언어 전환 · 아이콘 SVG)를 씁니다 —
   세 쪽이 서로 다르게 보이면 같은 앱의 페이지로 보이지 않습니다.
@@ -10,10 +10,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>나랑 놀자! · 열두 가지 놀이와 오늘의 도전 / Daily Playground</title>
+<title>포포키 · 열두 가지 놀이와 오늘의 도전 / Popoki</title>
 <meta name="description" content="숫자·한글·ABC·국기·시계·구구단·달력·도형·색·미로·칠교·그리기 — 열두 가지 놀이와 매일 15문제 오늘의 도전. 광고·결제·계정 없이 기기 안에서만 돕니다.">
 <meta name="color-scheme" content="light">
-<meta property="og:title" content="나랑 놀자! / Daily Playground">
+<meta property="og:title" content="포포키 / Popoki">
 <meta property="og:description" content="열두 가지 놀이와 오늘의 도전. 광고도 결제도 계정도 없는 아이 놀이 앱.">
 <meta property="og:type" content="website">
 <style>
@@ -84,6 +84,17 @@
     margin: 26px 0 18px;
     font-size: 16px; font-weight: 600;
     color: rgba(59,59,79,0.82);
+    text-align: center;
+  }
+
+  /* 이름 뜻 — 조어라서 이름만으로는 뜻이 읽히지 않아 한 번 풀어 줍니다.
+     **배경·테두리를 두지 않습니다.** 카드로 만들면 소개글(`.intro`)보다 더 강조돼
+     보여서, 정작 앱이 무엇인지보다 이름 유래가 먼저 읽힙니다. */
+  .name-note {
+    margin: 14px auto 0;
+    max-width: 34em;
+    font-size: 14px; font-weight: 600; line-height: 1.7;
+    color: var(--brand-subtle);
     text-align: center;
   }
 
@@ -230,15 +241,24 @@
          손으로 그려 두었다가 타일 사이·여백·글자 크기가 어긋났고, 글자와 시계가 1칸
          아래로 밀려 있었습니다. 고칠 때는 **스크립트를 다시 돌립니다.** -->
     <img class="mark" src="icon-256.png" width="256" height="256"
-      alt="나랑 놀자! / Daily Playground">
+      alt="포포키 / Popoki">
 
     <h1>
-      <span data-lang="ko">나랑 놀자!</span>
-      <span data-lang="en">Daily Playground</span>
+      <span data-lang="ko">포포키</span>
+      <span data-lang="en">Popoki</span>
     </h1>
     <p class="sub">
       <span data-lang="ko">열두 가지 놀이와 오늘의 도전 · 만 5세부터</span>
       <span data-lang="en">Twelve games and a daily challenge · ages 5 and up</span>
+    </p>
+
+    <p class="name-note" data-lang="ko">
+      이름 뜻 — 팡팡 터지는 재미를 뜻하는 ‘팝(Pop)’과 아이들을 뜻하는 ‘키즈(Kids)’를
+      합친 이름이에요. 풍선이 부풀듯 상상력이 팡팡 커지는 놀이터라는 뜻도 담았습니다.
+    </p>
+    <p class="name-note" data-lang="en">
+      About the name — Popoki joins ‘pop’, the sound of fun bursting open, with ‘kids’.
+      It also carries the idea of a playground where imagination swells like a balloon.
     </p>
 
     <nav class="langs" aria-label="Language">
