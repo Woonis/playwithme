@@ -224,6 +224,25 @@
   .contact span { display: block; font-size: 13px; font-weight: 600; opacity: 0.9; margin-top: 2px; }
   .reply { margin: 10px 0 0; text-align: center; font-size: 13px; font-weight: 600; color: var(--brand-subtle); }
 
+  /* 내려받기 단추 두 개.
+     좁은 화면에서는 한 줄에 하나씩 쌓이고, 넓어지면 나란히 섭니다 — 가로로 두 칸을
+     밀어 넣으면 아이폰에서 글자가 두 줄로 접힙니다. */
+  .stores {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin: 0;
+  }
+  .store {
+    flex: 1 1 220px;
+    display: block; text-align: center;
+    padding: 15px 18px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+    color: #fff; font-size: 16px; font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(59,78,168,0.32);
+  }
+  .store span { display: block; font-size: 13px; font-weight: 600; opacity: 0.9; margin-top: 2px; }
+
   .links { margin: 18px 0 0; text-align: center; font-size: 14px; font-weight: 700; }
   .links a { margin: 0 8px; }
 
@@ -596,27 +615,38 @@
       <p><a href="privacy.html">Read the full privacy policy →</a></p>
     </div>
 
-    <!-- ── 출시 ───────────────────────────────────── -->
-    <h2 class="sec" data-lang="ko">출시 준비 중이에요</h2>
-    <h2 class="sec" data-lang="en">Coming soon</h2>
+    <!-- ── 내려받기 ───────────────────────────────── -->
+    <!-- 2026-11-16에 두 스토어에 올라갔습니다. 단추 두 개는 `data-lang` 없이 한 벌만
+         둡니다 — 상표 이름과 기기 이름뿐이라 두 언어가 같고, 값은 나라마다 달라서
+         단추에 적지 않습니다(한국 ₩3,300). -->
+    <h2 class="sec" data-lang="ko">내려받기</h2>
+    <h2 class="sec" data-lang="en">Download</h2>
     <div class="card" data-lang="ko">
-      <p>App Store와 Google Play 심사를 준비하고 있습니다. 올라가면 이 페이지에 내려받기
-        단추가 생깁니다.
-        먼저 써 보고 싶거나 바라는 놀이가 있다면 메일로 알려 주세요 — 한 사람이 만드는 앱이라
-        의견이 그대로 들어갑니다.</p>
+      <p>두 스토어에 올라가 있습니다. <strong>한 번 사면 끝</strong>이고 앱 안에서 더 낼 것은
+        없습니다 — 광고도, 정기 결제도, 아이가 누를 수 있는 결제도 없습니다.
+        바라는 놀이가 있다면 메일로 알려 주세요. 한 사람이 만드는 앱이라 의견이 그대로
+        들어갑니다.</p>
     </div>
     <div class="card" data-lang="en">
-      <p>We are preparing for App Store and Google Play review; a download button will appear
-        here once it is live.
-        If you would like to try it early, or there is a game you wish it had, just send an email —
-        this is a one-person app, so suggestions go straight in.</p>
+      <p>Available on both stores. <strong>One purchase, that's it</strong> — no ads, no
+        subscription, and nothing a child can tap to buy.
+        If there is a game you wish it had, just send an email — this is a one-person app,
+        so suggestions go straight in.</p>
+    </div>
+    <div class="stores">
+      <a class="store" href="https://apps.apple.com/kr/app/id6823012765">
+        App Store<span>iPhone · iPad</span>
+      </a>
+      <a class="store" href="https://play.google.com/store/apps/details?id=com.wooni.playwithme">
+        Google Play<span>Android</span>
+      </a>
     </div>
 
-    <a class="contact" data-lang="ko" href="mailto:baby.planner.wooni@gmail.com?subject=%5B%EB%82%98%EB%9E%91%20%EB%86%80%EC%9E%90!%5D%20%EB%AC%B8%EC%9D%98">
+    <a class="contact" data-lang="ko" href="mailto:baby.planner.wooni@gmail.com?subject=%5B%ED%8F%AC%ED%8F%AC%ED%82%A4%5D%20%EB%AC%B8%EC%9D%98">
       메일로 문의하기
       <span>baby.planner.wooni@gmail.com</span>
     </a>
-    <a class="contact" data-lang="en" href="mailto:baby.planner.wooni@gmail.com?subject=%5BDaily%20Playground%5D%20Hello">
+    <a class="contact" data-lang="en" href="mailto:baby.planner.wooni@gmail.com?subject=%5BPopoki%5D%20Hello">
       Email us
       <span>baby.planner.wooni@gmail.com</span>
     </a>
